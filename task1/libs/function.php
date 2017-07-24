@@ -35,7 +35,10 @@ function uploadFile(){
 function deleteFile($fileName){
 	$fullWayToFile = FULLWAY . "/uploadFiles/$fileName";
 	unlink($fullWayToFile);
-	echo "1111";
+	if!(file_exists($fullWayToFile)){
+		return true;
+	}
+return false;
 }
 
 
