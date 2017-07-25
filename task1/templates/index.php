@@ -9,4 +9,4 @@ header('Content-Type: text/html; charset=utf-8');
     Send this file: <input name="userfile" type="file" />
     <input type="submit" value="Send File" />
 </form>
-
+</html>
