@@ -1,6 +1,6 @@
 <?php
 
-class calculator{
+class Calculator{
     private $firstValue;
     private $secondValue;
     private $memory;
@@ -14,32 +14,68 @@ class calculator{
 
     public function  getFirstValue()
     {
-        return $this->firstValue;
+        if($this->firstValue !== null)
+        {
+            return $this->firstValue;
+        }else
+        {
+            return 'Wrong number Priravnivaem k 0';
+        }
     }
 
     public function  setFirstValue($value)
     {
-        $this->firstValue = $value;
+        if(is_numeric($value))
+        {
+            $this->firstValue = $value;
+        }else
+        {
+            $this->firstValue = null;
+        }
     }
 
     public  function getSecondValue()
     {
-        return $this->secondValue;
+        if($this->secondValue !== null)
+        {
+            return $this->secondValue;
+        }else
+        {
+            return 'Wrong number Priravnivaem k 0';
+        }
     }   
 
     public function setSecondValue($value)
     {
-        $this->secondValue = $value;
+        if(is_numeric($value))
+        {
+            $this->secondValue = $value;
+        }else
+        {
+            $this->secondValue = null;
+        }
     }
 
     public function  getMemory()
     {
-        return $this->memory;
+        if($this->firstValue !== null)
+        {
+            return $this->memory;
+        }else
+        {
+            return 'Wrong number Priravnivaem k 0';
+        }
+
     }
 
     public function  setMemory($value)
     {
-        $this->memory = $value;
+        if(is_numeric($value)) {
+            $this->memory = $value;
+        }else
+        {
+            $this->memory = null;
+        }
     }
 
 

@@ -1,15 +1,14 @@
 <?php
 
-include ("libs/calculator.php");
+include("libs/Calculator.php");
 include ("config.php");
 
 $calculator =  new calculator();
-$calculator->setFirstValue(10);
-$calculator->setSecondValue(10);
+$calculator->setFirstValue(5);
+$calculator->setSecondValue(5);
 $sumResult = $calculator->plus();
 $sumFirstValue = $calculator->getFirstValue();
 $sumSecondValue = $calculator->getSecondValue();
-
 $calculator->setFirstValue(0);
 $calculator->setSecondValue(0);
 

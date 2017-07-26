@@ -2,6 +2,14 @@
 
 class ReadFileAndReplace
 {
+    public function __construct()
+    {
+    }
+
+    public function __destruct()
+    {
+    }
+
     private function checkDirFilePerm($fileName)
     {
         if (is_dir(DIR_WITH_READ_FILES)) {
