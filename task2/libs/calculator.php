@@ -1,6 +1,6 @@
 <?php
 
-class Calculator{
+class calculator{
     private $firstValue;
     private $secondValue;
     private $memory;

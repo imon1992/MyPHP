@@ -1,6 +1,6 @@
 <?php
 
-include("libs/Calculator.php");
+include("libs/calculator.php");
 include ("config.php");
 
 $calculator =  new calculator();

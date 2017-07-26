@@ -10,7 +10,7 @@ if($replaceString !== true)
 {
     if (array_key_exists('error', $replaceString))
     {
-        $errorReplaceString = $fileReader->checkError($replaceString['error']);
+        $errorReplaceString = $replacer->checkError($replaceString['error']);
     }
 }
 
@@ -19,7 +19,7 @@ if($replaceSymbol !==true)
 {
     if (array_key_exists('error', $replaceSymbol))
     {
-        $errorReplaceSymbol = $fileReader->checkError($replaceSymbol['error']);
+        $errorReplaceSymbol = $replacer->checkError($replaceSymbol['error']);
     }
 }
 
