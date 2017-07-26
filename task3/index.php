@@ -1,9 +1,9 @@
 <?php
 
 include('config.php');
-include('libs/ReadFile.php');
+include('libs/ReadFileAndReplace.php');
 
-$fileReader = new ReadFile();
+$fileReader = new ReadFileAndReplace();
 $readByLine = $fileReader->readByline('file.txt');
 
 if (array_key_exists('error', $readByLine))

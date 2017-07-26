@@ -1,6 +1,6 @@
 <?php
 
-class ReadFile
+class ReadFileAndReplace
 {
     private function checkDirFilePerm($fileName)
     {
@@ -96,6 +96,82 @@ class ReadFile
         }
     }
 
+    public function replaceString($fileName,$stringNumber,$onWhatReplace)
+    {
+        $fileWayName = DIR_WITH_READ_FILES . '/' . $fileName;
+        $checkResult = $this->checkDirFilePerm($fileName);
+        if ($checkResult === true)
+        {
+            $linesArr = file($fileWayName);
+
+            if($stringNumber > sizeof($linesArr))
+                return ['error' => 5];
+
+            return $this->saveChanges($fileWayName,$linesArr,$stringNumber,$onWhatReplace);
+
+        }else
+        {
+            return $checkResult;
+        }
+    }
+
+    public function replaceSymbols($fileName,$symbolNumber,$onWhatReplace)
+    {
+        $fileWayName = DIR_WITH_READ_FILES . '/' . $fileName;
+        $checkResult = $this->checkDirFilePerm($fileName);
+        if ($checkResult === true) {
+            $fp = fopen($fileWayName, "r");
+            if($fp === false)
+            {
+                return ['error' => 3];
+            }
+            while (false !== ($char = fgetc($fp))) {
+                $arr[] = $char;
+            }
+            fclose($fp);
+
+            if($symbolNumber > sizeof($arr))
+                return ['error' => 5];
+            return $this->saveChanges($fileWayName,$arr,$symbolNumber,$onWhatReplace);
+
+        }else
+        {
+            return $checkResult;
+        }
+    }
+
+    public function saveChanges($fileWayName,$arr,$symbolOrLineNumber,$onWhatReplace){
+
+        $firstarrElemlength = strlen($arr[0]);
+        $fp = fopen($fileWayName, "w");
+        if($fp === false){
+            return ['error' => 3];
+        }
+        for ($i = 0; $i < $symbolOrLineNumber - 1; $i++) {
+
+            fputs($fp, $arr[$i]);
+        }
+        unset($arr[$symbolOrLineNumber - 1]);
+
+        if($firstarrElemlength > 1)
+        {
+
+            fputs($fp, $onWhatReplace. chr(13) . chr(10));
+        }else
+        {
+
+            fputs($fp, $onWhatReplace);
+        }
+
+
+        for ($i = $symbolOrLineNumber - 1; $i <= count($arr); $i++) {
+
+            fputs($fp, $arr[$i]);
+        }
+        fclose($fp);
+        return true;
+    }
+
     public function checkError($errorNumber){
         switch ($errorNumber) {
             case 0:
@@ -107,7 +183,9 @@ class ReadFile
             case 3:
                 return FOPEN_ERROR;
             case 4:
-                return UNEXPECTED_END_Of_File_ERROR;
+                return PERMISSION_ERROR;
+            case 5:
+                return STRING_ERROR;
         }
     }
 }

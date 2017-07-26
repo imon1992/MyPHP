@@ -7,5 +7,7 @@ define("FILE_ERROR", "No find File");//1
 define("PERMISSION_ERROR", "No have permission to read file");//2
 define("FOPEN_ERROR", "File open Error");//3
 define("UNEXPECTED_END_Of_File_ERROR", "unexpected end of file");//4
+define("STRING_ERROR", "No find this string or symbol");//5
+
 
 
