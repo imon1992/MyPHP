@@ -1,6 +1,6 @@
 <?php
 
-include ('Sql.php');
+//include ('Sql.php');
 class MySql extends Sql
 {
     protected $connect;
@@ -17,6 +17,7 @@ class MySql extends Sql
     
     public function query($query)
     {
+        $query = str_replace('"','`',$query);
         mysql_select_db('user1',$this->connect);
 
        $result = mysql_query($query,$this->connect);

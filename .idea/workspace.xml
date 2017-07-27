@@ -2,9 +2,10 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="355282d4-7f12-47a0-9ca1-bb3b32379a7a" name="Default" comment="">
-      <change type="MOVED" beforePath="C:\OpenServer\domains\php\MyPHP\task2\libs\calculator.php" afterPath="$PROJECT_DIR$/task2/libs/Calculator.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/task3/libs/ReadFileAndReplace.php" afterPath="$PROJECT_DIR$/task3/libs/ReadFileAndReplace.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/task2/index.php" afterPath="$PROJECT_DIR$/task2/index.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/task4/libs/MySql.php" afterPath="$PROJECT_DIR$/task4/libs/MySql.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/task4/libs/Sql.php" afterPath="$PROJECT_DIR$/task4/libs/Sql.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/task4/index.php" afterPath="$PROJECT_DIR$/task4/index.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="MyPHP.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -29,32 +30,113 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="Calculator.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/task2/libs/Calculator.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-4.6363635" vertical-offset="0" max-vertical-offset="2550">
-              <caret line="15" column="5" selection-start-line="15" selection-start-column="5" selection-end-line="15" selection-end-column="5" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
       <file leaf-file-name="index.php" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/task2/index.php">
+        <entry file="file://$PROJECT_DIR$/task4/index.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.08916084" vertical-offset="51" max-vertical-offset="1275">
-              <caret line="6" column="28" selection-start-line="6" selection-start-column="28" selection-end-line="6" selection-end-column="28" />
+            <state vertical-scroll-proportion="0.79195803" vertical-offset="652" max-vertical-offset="1581">
+              <caret line="65" column="29" selection-start-line="65" selection-start-column="29" selection-end-line="65" selection-end-column="29" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="ReadFileAndReplace.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/task3/libs/ReadFileAndReplace.php">
+      <file leaf-file-name="Sql.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/task4/libs/Sql.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-5.230769" vertical-offset="0" max-vertical-offset="3468">
-              <caret line="8" column="4" selection-start-line="8" selection-start-column="4" selection-end-line="8" selection-end-column="4" />
+            <state vertical-scroll-proportion="-7.6153846" vertical-offset="1196" max-vertical-offset="2839">
+              <caret line="82" column="55" selection-start-line="82" selection-start-column="55" selection-end-line="82" selection-end-column="55" />
+              <folding>
+                <marker date="1501156685786" expanded="true" signature="2386:2398" placeholder="INSERT INTO ..." />
+                <marker date="1501156685786" expanded="true" signature="2386:2400" placeholder="INSERT INTO ..." />
+                <marker date="1501156685786" expanded="true" signature="2386:2414" placeholder="INSERT INTO ..." />
+                <marker date="1501156685786" expanded="true" signature="2386:2420" placeholder="INSERT INTO ..." />
+                <marker date="1501156685786" expanded="true" signature="2386:2422" placeholder="INSERT INTO ..." />
+                <marker date="1501156685786" expanded="true" signature="2386:2423" placeholder="INSERT INTO ..." />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="index.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/task4/templates/index.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="-17.0" vertical-offset="0" max-vertical-offset="1649">
+              <caret line="26" column="26" selection-start-line="26" selection-start-column="26" selection-end-line="26" selection-end-column="26" />
+              <folding>
+                <marker date="1501152890476" expanded="true" signature="53:859" placeholder="..." />
+                <marker date="1501152890476" expanded="true" signature="62:550" placeholder="..." />
+                <marker date="1501152890476" expanded="true" signature="360:476" placeholder="..." />
+                <marker date="1501152890476" expanded="true" signature="559:859" placeholder="..." />
+                <marker date="1501152890476" expanded="true" signature="581:859" placeholder="..." />
+                <marker date="1501152890476" expanded="true" signature="610:859" placeholder="..." />
+                <marker date="1501152890476" expanded="true" signature="645:859" placeholder="..." />
+                <marker date="1501152890476" expanded="true" signature="662:747" placeholder="..." />
+                <marker date="1501152890476" expanded="true" signature="764:855" placeholder="..." />
+                <marker date="1501152890476" expanded="true" signature="764:859" placeholder="..." />
+                <marker date="1501152890476" expanded="true" signature="785:834" placeholder="..." />
+                <marker date="1501152890476" expanded="true" signature="855:859" placeholder="..." />
+                <marker date="1501152890476" expanded="true" signature="859:1913" placeholder="..." />
+                <marker date="1501152890476" expanded="true" signature="859:1913" placeholder="..." />
+                <marker date="1501152890476" expanded="true" signature="859:1913" placeholder="..." />
+                <marker date="1501152890476" expanded="true" signature="859:1913" placeholder="..." />
+                <marker date="1501152890476" expanded="true" signature="859:1913" placeholder="..." />
+                <marker date="1501152890476" expanded="true" signature="859:1913" placeholder="..." />
+                <marker date="1501152890476" expanded="true" signature="859:1913" placeholder="..." />
+                <marker date="1501152890476" expanded="true" signature="859:1149" placeholder="..." />
+                <marker date="1501152890476" expanded="true" signature="859:1149" placeholder="..." />
+                <marker date="1501152890476" expanded="true" signature="1054:1145" placeholder="..." />
+                <marker date="1501152890476" expanded="true" signature="1075:1124" placeholder="..." />
+                <marker date="1501152890476" expanded="true" signature="1149:1356" placeholder="..." />
+                <marker date="1501152890476" expanded="true" signature="1149:1356" placeholder="..." />
+                <marker date="1501152890476" expanded="true" signature="1311:1336" placeholder="..." />
+                <marker date="1501152890476" expanded="true" signature="1356:1516" placeholder="..." />
+                <marker date="1501152890476" expanded="true" signature="1488:1512" placeholder="..." />
+                <marker date="1501152890476" expanded="true" signature="1493:1507" placeholder="..." />
+                <marker date="1501152890476" expanded="true" signature="1516:1913" placeholder="..." />
+                <marker date="1501152890476" expanded="true" signature="1516:1913" placeholder="..." />
+                <marker date="1501152890476" expanded="true" signature="1709:1879" placeholder="..." />
+                <marker date="1501152890476" expanded="true" signature="1747:1866" placeholder="..." />
+                <marker date="1501152890476" expanded="true" signature="1764:1849" placeholder="..." />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="config.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/task4/config.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="-3.2692308" vertical-offset="0" max-vertical-offset="187">
+              <caret line="5" column="8" selection-start-line="5" selection-start-column="8" selection-end-line="5" selection-end-column="20" />
               <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="MySql.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/task4/libs/MySql.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="-1.9615384" vertical-offset="0" max-vertical-offset="782">
+              <caret line="3" column="22" selection-start-line="3" selection-start-column="22" selection-end-line="3" selection-end-column="22" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="PgSql.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/task4/libs/PgSql.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="-1.3076923" vertical-offset="0" max-vertical-offset="1003">
+              <caret line="2" column="22" selection-start-line="2" selection-start-column="22" selection-end-line="2" selection-end-column="22" />
+              <folding>
+                <marker date="1501158850220" expanded="true" signature="993:1052" placeholder="SELECT `data..." />
+                <marker date="1501158850220" expanded="true" signature="993:1054" placeholder="SELECT `data..." />
+                <marker date="1501158850220" expanded="true" signature="993:1055" placeholder="SELECT `data..." />
+                <marker date="1501158850220" expanded="true" signature="1069:1106" placeholder="SELECT &quot;data..PG_TEST..." />
+                <marker date="1501158850220" expanded="true" signature="1069:1120" placeholder="SELECT &quot;data..PG_TEST..." />
+                <marker date="1501158850220" expanded="true" signature="1069:1130" placeholder="SELECT &quot;data..PG_TEST..." />
+                <marker date="1501158850220" expanded="true" signature="1477:1501" placeholder="SELECT `data..." />
+                <marker date="1501158850220" expanded="true" signature="1508:1509" placeholder="SELECT &quot;key&quot;..PG_TEST..." />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -81,6 +163,13 @@
         <option value="$PROJECT_DIR$/task3/libs/ReadFileAndReplace.php" />
         <option value="$PROJECT_DIR$/task2/libs/Calculator.php" />
         <option value="$PROJECT_DIR$/task2/index.php" />
+        <option value="$PROJECT_DIR$/task4/config.php" />
+        <option value="$PROJECT_DIR$/task4/templates/style.css" />
+        <option value="$PROJECT_DIR$/task4/templates/index.php" />
+        <option value="$PROJECT_DIR$/task4/libs/Sql.php" />
+        <option value="$PROJECT_DIR$/task4/libs/MySql.php" />
+        <option value="$PROJECT_DIR$/task4/libs/PgSql.php" />
+        <option value="$PROJECT_DIR$/task4/index.php" />
       </list>
     </option>
   </component>
@@ -116,7 +205,6 @@
       <sortByType />
     </navigator>
     <panes>
-      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -135,7 +223,7 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="task3" />
+              <option name="myItemId" value="task4" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -149,25 +237,7 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="task3" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="templates" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="MyPHP" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="MyPHP" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="task3" />
+              <option name="myItemId" value="task4" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
@@ -182,46 +252,6 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="MyPHP" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="task2" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="MyPHP" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="MyPHP" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="task2" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="templates" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="MyPHP" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="MyPHP" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="task2" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="libs" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -241,6 +271,7 @@
           </PATH>
         </subPane>
       </pane>
+      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -251,6 +282,7 @@
     <property name="LayoutCode.rearrangeEntriesPHP" value="false" />
     <property name="recentsLimit" value="5" />
     <property name="FullScreen" value="false" />
+    <property name="list.type.of.created.stylesheet" value="CSS" />
   </component>
   <component name="RunManager" selected="JavaScript Debug.function.php">
     <configuration default="false" name="function.php" type="JavascriptDebugType" factoryName="JavaScript Debug" temporary="true" nameIsGenerated="true" uri="http://localhost:63342/MyPHP/task1/libs/function.php">
@@ -282,6 +314,9 @@
       <BehatRunner />
       <method />
     </configuration>
+    <configuration default="true" type="PhpUnitRemoteRunConfigurationType" factoryName="PHPUnit on Server">
+      <method />
+    </configuration>
     <configuration default="true" type="js.build_tools.gulp" factoryName="Gulp.js">
       <node-options />
       <gulpfile />
@@ -289,9 +324,6 @@
       <arguments />
       <pass-parent-envs>true</pass-parent-envs>
       <envs />
-      <method />
-    </configuration>
-    <configuration default="true" type="PhpUnitRemoteRunConfigurationType" factoryName="PHPUnit on Server">
       <method />
     </configuration>
     <list size="3">
@@ -336,13 +368,13 @@
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
-      <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.399361" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
-      <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
-      <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
+      <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
     </layout>
   </component>
   <component name="Vcs.Log.UiProperties">
@@ -363,16 +395,39 @@
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
-      <option name="time" value="11" />
+      <option name="time" value="12" />
     </breakpoint-manager>
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
+    <entry file="file://$PROJECT_DIR$/task2/libs/calculator.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="255" max-vertical-offset="2550">
+          <caret line="15" column="5" selection-start-line="15" selection-start-column="5" selection-end-line="15" selection-end-column="5" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/task2/index.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="100">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/task3/libs/ReadFileAndReplace.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="136" max-vertical-offset="3468">
+          <caret line="8" column="4" selection-start-line="8" selection-start-column="4" selection-end-line="8" selection-end-column="4" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/task3/index.php">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="119" max-vertical-offset="221">
           <caret line="7" column="36" selection-start-line="7" selection-start-column="36" selection-end-line="7" selection-end-column="36" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -380,7 +435,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="102" max-vertical-offset="238">
           <caret line="6" column="65" selection-start-line="6" selection-start-column="65" selection-end-line="6" selection-end-column="65" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -469,18 +523,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/task1/config.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-1.3076923" vertical-offset="0" max-vertical-offset="272">
-          <caret line="2" column="61" selection-start-line="2" selection-start-column="22" selection-end-line="2" selection-end-column="61" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/task3/config.php">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="-5.8846154" vertical-offset="0" max-vertical-offset="323">
           <caret line="9" column="8" selection-start-line="9" selection-start-column="8" selection-end-line="9" selection-end-column="20" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -488,7 +534,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="-2.4285715" vertical-offset="0" max-vertical-offset="442">
           <caret line="12" column="0" selection-start-line="12" selection-start-column="0" selection-end-line="12" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -496,7 +541,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="-10.461538" vertical-offset="0" max-vertical-offset="714">
           <caret line="16" column="0" selection-start-line="16" selection-start-column="0" selection-end-line="24" selection-end-column="12" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -504,7 +548,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.11888112" vertical-offset="0" max-vertical-offset="572">
           <caret line="4" column="0" selection-start-line="4" selection-start-column="0" selection-end-line="4" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -512,7 +555,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.11888112" vertical-offset="0" max-vertical-offset="578">
           <caret line="4" column="12" selection-start-line="4" selection-start-column="12" selection-end-line="4" selection-end-column="12" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -520,21 +562,12 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.02972028" vertical-offset="0" max-vertical-offset="572">
           <caret line="1" column="33" selection-start-line="1" selection-start-column="33" selection-end-line="1" selection-end-column="33" />
-          <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/task3/libs/ReadFileAndReplace.php">
+    <entry file="file://$PROJECT_DIR$/task2/libs/calculator.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-5.230769" vertical-offset="0" max-vertical-offset="3468">
-          <caret line="8" column="4" selection-start-line="8" selection-start-column="4" selection-end-line="8" selection-end-column="4" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/task2/libs/Calculator.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-4.6363635" vertical-offset="0" max-vertical-offset="2550">
+        <state vertical-scroll-proportion="0.0" vertical-offset="255" max-vertical-offset="2550">
           <caret line="15" column="5" selection-start-line="15" selection-start-column="5" selection-end-line="15" selection-end-column="5" />
           <folding />
         </state>
@@ -542,8 +575,123 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/task2/index.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.08916084" vertical-offset="51" max-vertical-offset="1275">
+        <state vertical-scroll-proportion="0.0" vertical-offset="102" max-vertical-offset="1275">
           <caret line="6" column="28" selection-start-line="6" selection-start-column="28" selection-end-line="6" selection-end-column="28" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/task3/libs/ReadFileAndReplace.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="153" max-vertical-offset="3485">
+          <caret line="9" column="4" selection-start-line="9" selection-start-column="4" selection-end-line="9" selection-end-column="4" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/task1/config.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.05944056" vertical-offset="0" max-vertical-offset="572">
+          <caret line="2" column="0" selection-start-line="2" selection-start-column="0" selection-end-line="2" selection-end-column="66" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/task4/templates/index.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-17.0" vertical-offset="0" max-vertical-offset="1649">
+          <caret line="26" column="26" selection-start-line="26" selection-start-column="26" selection-end-line="26" selection-end-column="26" />
+          <folding>
+            <marker date="1501152890476" expanded="true" signature="53:859" placeholder="..." />
+            <marker date="1501152890476" expanded="true" signature="62:550" placeholder="..." />
+            <marker date="1501152890476" expanded="true" signature="360:476" placeholder="..." />
+            <marker date="1501152890476" expanded="true" signature="559:859" placeholder="..." />
+            <marker date="1501152890476" expanded="true" signature="581:859" placeholder="..." />
+            <marker date="1501152890476" expanded="true" signature="610:859" placeholder="..." />
+            <marker date="1501152890476" expanded="true" signature="645:859" placeholder="..." />
+            <marker date="1501152890476" expanded="true" signature="662:747" placeholder="..." />
+            <marker date="1501152890476" expanded="true" signature="764:855" placeholder="..." />
+            <marker date="1501152890476" expanded="true" signature="764:859" placeholder="..." />
+            <marker date="1501152890476" expanded="true" signature="785:834" placeholder="..." />
+            <marker date="1501152890476" expanded="true" signature="855:859" placeholder="..." />
+            <marker date="1501152890476" expanded="true" signature="859:1913" placeholder="..." />
+            <marker date="1501152890476" expanded="true" signature="859:1913" placeholder="..." />
+            <marker date="1501152890476" expanded="true" signature="859:1913" placeholder="..." />
+            <marker date="1501152890476" expanded="true" signature="859:1913" placeholder="..." />
+            <marker date="1501152890476" expanded="true" signature="859:1913" placeholder="..." />
+            <marker date="1501152890476" expanded="true" signature="859:1913" placeholder="..." />
+            <marker date="1501152890476" expanded="true" signature="859:1913" placeholder="..." />
+            <marker date="1501152890476" expanded="true" signature="859:1149" placeholder="..." />
+            <marker date="1501152890476" expanded="true" signature="859:1149" placeholder="..." />
+            <marker date="1501152890476" expanded="true" signature="1054:1145" placeholder="..." />
+            <marker date="1501152890476" expanded="true" signature="1075:1124" placeholder="..." />
+            <marker date="1501152890476" expanded="true" signature="1149:1356" placeholder="..." />
+            <marker date="1501152890476" expanded="true" signature="1149:1356" placeholder="..." />
+            <marker date="1501152890476" expanded="true" signature="1311:1336" placeholder="..." />
+            <marker date="1501152890476" expanded="true" signature="1356:1516" placeholder="..." />
+            <marker date="1501152890476" expanded="true" signature="1488:1512" placeholder="..." />
+            <marker date="1501152890476" expanded="true" signature="1493:1507" placeholder="..." />
+            <marker date="1501152890476" expanded="true" signature="1516:1913" placeholder="..." />
+            <marker date="1501152890476" expanded="true" signature="1516:1913" placeholder="..." />
+            <marker date="1501152890476" expanded="true" signature="1709:1879" placeholder="..." />
+            <marker date="1501152890476" expanded="true" signature="1747:1866" placeholder="..." />
+            <marker date="1501152890476" expanded="true" signature="1764:1849" placeholder="..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/task4/config.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-3.2692308" vertical-offset="0" max-vertical-offset="187">
+          <caret line="5" column="8" selection-start-line="5" selection-start-column="8" selection-end-line="5" selection-end-column="20" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/task4/libs/Sql.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-7.6153846" vertical-offset="1196" max-vertical-offset="2839">
+          <caret line="82" column="55" selection-start-line="82" selection-start-column="55" selection-end-line="82" selection-end-column="55" />
+          <folding>
+            <marker date="1501156685786" expanded="true" signature="2386:2398" placeholder="INSERT INTO ..." />
+            <marker date="1501156685786" expanded="true" signature="2386:2400" placeholder="INSERT INTO ..." />
+            <marker date="1501156685786" expanded="true" signature="2386:2414" placeholder="INSERT INTO ..." />
+            <marker date="1501156685786" expanded="true" signature="2386:2420" placeholder="INSERT INTO ..." />
+            <marker date="1501156685786" expanded="true" signature="2386:2422" placeholder="INSERT INTO ..." />
+            <marker date="1501156685786" expanded="true" signature="2386:2423" placeholder="INSERT INTO ..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/task4/libs/PgSql.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-1.3076923" vertical-offset="0" max-vertical-offset="1003">
+          <caret line="2" column="22" selection-start-line="2" selection-start-column="22" selection-end-line="2" selection-end-column="22" />
+          <folding>
+            <marker date="1501158850220" expanded="true" signature="993:1052" placeholder="SELECT `data..." />
+            <marker date="1501158850220" expanded="true" signature="993:1054" placeholder="SELECT `data..." />
+            <marker date="1501158850220" expanded="true" signature="993:1055" placeholder="SELECT `data..." />
+            <marker date="1501158850220" expanded="true" signature="1069:1106" placeholder="SELECT &quot;data..PG_TEST..." />
+            <marker date="1501158850220" expanded="true" signature="1069:1120" placeholder="SELECT &quot;data..PG_TEST..." />
+            <marker date="1501158850220" expanded="true" signature="1069:1130" placeholder="SELECT &quot;data..PG_TEST..." />
+            <marker date="1501158850220" expanded="true" signature="1477:1501" placeholder="SELECT `data..." />
+            <marker date="1501158850220" expanded="true" signature="1508:1509" placeholder="SELECT &quot;key&quot;..PG_TEST..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/task4/libs/MySql.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-1.9615384" vertical-offset="0" max-vertical-offset="782">
+          <caret line="3" column="22" selection-start-line="3" selection-start-column="22" selection-end-line="3" selection-end-column="22" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/task4/index.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.79195803" vertical-offset="652" max-vertical-offset="1581">
+          <caret line="65" column="29" selection-start-line="65" selection-start-column="29" selection-end-line="65" selection-end-column="29" />
           <folding />
         </state>
       </provider>

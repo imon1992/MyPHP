@@ -32,7 +32,7 @@ class Sql
 
      public function from($baseName,$tableName)
      {
-         $from = " FROM  $baseName.$tableName ";
+         $from = " FROM  \"$baseName\".\"$tableName\" ";
          $this->from .= $from;
          return $this;
      }
@@ -45,10 +45,10 @@ class Sql
          {
              if($columnsCount == ($i+1))
              {
-                 $where .= $columnsArr[$i] . '=' . "'" . $paramsArr[$i] . "'";
+                 $where .= '"'. $columnsArr[$i] . '"'  . '=' . "'" . $paramsArr[$i] . "'";
              }else
              {
-                 $where .= $columnsArr[$i] . '=' . "'" . $paramsArr[$i] . "'" . ',';
+                 $where .= '"'. $columnsArr[$i] . '"' . '=' . "'" . $paramsArr[$i] . "'" . ',';
              }
          }
          $this->where  .= $where;
@@ -62,9 +62,9 @@ class Sql
         return $this;
     }
 
-    public function update($tName)
+    public function update($baseName,$tName)
     {
-        $update = "UPDATE $tName";
+        $update = "UPDATE \"$baseName\".\"$tName\"";
         $this->update = $update;
         return $this;
     }   
@@ -77,10 +77,10 @@ class Sql
         {
               if($columnsCount == ($i+1))
               {
-                  $set .= $columnsArr[$i] . '=' . "'" . $paramsArr[$i] . "'";
+                  $set .= '"' . $columnsArr[$i] . '"' . '=' . "'" . $paramsArr[$i] . "'";
               }else
               {
-                  $set .= $columnsArr[$i] . '=' . "'" . $paramsArr[$i] . "'" . ',';
+                  $set .= '"' . $columnsArr[$i] . '"' . '=' . "'" . $paramsArr[$i] . "'" . ',';
               }
 
         }
@@ -88,9 +88,9 @@ class Sql
         return $this;
     }
 
-    public function insert($tName)
+    public function insert($baseName,$tName)
     {
-        $insert = "INSERT INTO $tName ";
+        $insert = "INSERT INTO \"$baseName\".\"$tName\" ";
         $this->insert = $insert;
         return $this;
     }
@@ -104,10 +104,10 @@ class Sql
          {
                if($columnsCount == ($i+1))
                {
-                   $columns .= $columnsArr[$i] ;
+                   $columns .= '"'. $columnsArr[$i] .'"' ;
                }else
               {
-                  $columns .= $columnsArr[$i] . ',';
+                  $columns .= '"'. $columnsArr[$i] .'"' . ',';
               }
          }
         $this->insert .= $columns . ')';
