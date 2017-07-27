@@ -3,51 +3,37 @@
 include ('Sql.php');
 class MySql extends Sql
 {
-    protected $connect
+    protected $connect;
     public function connectToDb()
     {
-        $link = mysql_connect('localhost', 'user1', 'tuser1');
+//        $link = mysql_connect('localhost', 'user1', 'tuser1');
+        //home connect
+        $link = mysql_connect('localhost', 'root', '');
         if (!$link) {
-            die('Connect Error' . mysql_error());
+            die('Connect Error');
          }   
        $this->connect = $link; 
      }
     
     public function query($query)
     {
-        mysql_select_db('user1',$link);
+        mysql_select_db('user1',$this->connect);
 
        $result = mysql_query($query,$this->connect);
- 
-// Выполняем запрос
+
         return $result;
     }
-}
 
-$x = new MySql();
-$x->connectToDb();
-
-$c = $x->select(['*'])->from('MY_TEST')->execute();
-
-//var_dump($c);
-/*
-echo $x->query($x->getSql(),$x->connectToDb());
-var_dump($x->getSql());
-*/
-
-/*
-$link = mysql_connect('localhost', 'user1', 'tuser1');
-        if (!$link) {
-           die('Connect Error' . mysql_error());
+    public function fetchAssoc($resource)
+    {
+        $i =0;
+        $dataArr = [];
+        while ($row = mysql_fetch_assoc($resource)) {
+            $row["key1"];
+            $row["data"];
+            $dataArr[$i]=[$row["key1"],$row["data"]];
+            $i++;
         }
-
-mysql_select_db('user1',$link); 
-// выполняем операции с базой данных
-$result = mysql_query($c, $link) or die("Error " . mysql_error($link)); 
-if($result)
-{
-    echo "yes";
+        return $dataArr;
+    }
 }
-*/ 
-// закрываем подключение
-mysql_close($link);

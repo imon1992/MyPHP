@@ -1,7 +1,7 @@
 <?php
 class Sql
  {
-    protected $sql;
+//    protected $sql;
     protected $select;
     protected $from;
     protected $where;
@@ -9,6 +9,7 @@ class Sql
     protected $update;
     protected $set;
     protected $insert;
+    protected $values;
      public function select($columns)
      {
          $columnsCount = sizeof($columns);
@@ -17,19 +18,21 @@ class Sql
          {
              if($columnsCount == ($i+1))
              {
-                 $select .= $columns[$i];
+                 $select .=  '"' .$columns[$i] .'"';
              }else
              {
-                 $select .= $columns[$i] . ',';
+                 $select .= '"' .$columns[$i] .'"' . ',';
              }
          }
          $this->select= $select;
+         if(array_search('*',$columns) !== false)
+             $this->select= null;
          return $this;
      }
 
-     public function from($tableName)
+     public function from($baseName,$tableName)
      {
-         $from = " FROM $tableName";
+         $from = " FROM  $baseName.$tableName ";
          $this->from .= $from;
          return $this;
      }
@@ -42,19 +45,19 @@ class Sql
          {
              if($columnsCount == ($i+1))
              {
-                 $where .= $columnsArr[$i] . '=' . $paramsArr[$i];
+                 $where .= $columnsArr[$i] . '=' . "'" . $paramsArr[$i] . "'";
              }else
              {
-                 $where .= $columnsArr[$i] . '=' . $paramsArr[$i] . ',';
+                 $where .= $columnsArr[$i] . '=' . "'" . $paramsArr[$i] . "'" . ',';
              }
          }
          $this->where  .= $where;
          return $this;
     }
 
-    public function delet($tName)
+    public function delet()
     {
-        $delet = 'DELETE ';
+        $delet = "DELETE ";
         $this->delet = $delet;
         return $this;
     }
@@ -74,10 +77,10 @@ class Sql
         {
               if($columnsCount == ($i+1))
               {
-                  $set .= $columnsArr[$i] . '=' . $paramsArr[$i];
+                  $set .= $columnsArr[$i] . '=' . "'" . $paramsArr[$i] . "'";
               }else
               {
-                  $set .= $columnsArr[$i] . '=' . $paramsArr[$i] . ',';
+                  $set .= $columnsArr[$i] . '=' . "'" . $paramsArr[$i] . "'" . ',';
               }
 
         }
@@ -85,38 +88,74 @@ class Sql
         return $this;
     }
 
-    public function insert($tName,$columnsArr)
+    public function insert($tName)
     {
-        $insert = "INSER INTO $tName ";
+        $insert = "INSERT INTO $tName ";
+        $this->insert = $insert;
+        return $this;
+    }
+    public function values($columnsArr,$paramsArr)
+    {
+        $this->insert .= '(';
+        $columns = '';
+        $values = ' VALUES (';
         $columnsCount = sizeof($columnsArr);
          for($i=0;$i<$columnsCount;$i++)
          {
                if($columnsCount == ($i+1))
                {
-                   $insert .= $columnsArr[$i] . '=' . $paramsArr[$i];
+                   $columns .= $columnsArr[$i] ;
                }else
               {
-                  $insert .= $columnsArr[$i] . '=' . $paramsArr[$i] . ',';
+                  $columns .= $columnsArr[$i] . ',';
               }
-
          }
-        $insert .=')';
-        $this->insert = $insert;
+        $this->insert .= $columns . ')';
+
+        $paramsCount = sizeof($paramsArr);
+        for($i=0;$i<$paramsCount;$i++)
+        {
+            if($paramsCount == ($i+1))
+            {
+                $values .= "'" . $paramsArr[$i] . "'";
+            }else
+            {
+                $values .= "'" . $paramsArr[$i] . "'" . ',';
+            }
+        }
+        $values .= ')';
+        $this->values = $values;
         return $this;
     }
     
     public function execute()
     {
         $result = '';
-        foreach($this as $value)
-        {
-            $result .= $value;
+        if($this->select !== null){
+            $result = $this->select . $this->from . $this->where;
         }
+        if($this->delet !== null){
+            $result = $this->delet . $this->from . $this->where;
+        }
+        if($this->update !== null){
+            $result = $this->update . $this->set;
+        }
+        if($this->insert !== null && $this->set !== null){
+            $result = $this->insert . $this->set;
+        }
+        if($this->insert !== null && $this->values !== null){
+            $result = $this->insert . $this->values;
+        }
+
+        $this->select = null;
+        $this->from = null;
+        $this->where = null;
+        $this->delet= null;
+        $this->update= null;
+        $this->set= null;
+        $this->insert= null;
+        $this->values= null;
+
         return $result;
     }
 }
-/*
-$c = new Sql();
-$c->select(['a','ab'])->from('t1')->where(['a','ab'],[1,2]);
-echo $c->sqlSelect;
-*/
