@@ -3,18 +3,24 @@
 include('config.php');
 include('libs/ReadFileAndReplace.php');
 
-$fileReader = new ReadFileAndReplace();
-$readByLine = $fileReader->readByline('file.txt');
+$fileReader = new ReadFileAndReplace('file.txt');
+$readByLine = $fileReader->readByline(2);
 
-if (array_key_exists('error', $readByLine))
+if(is_array($readByLine))
 {
-    $errorByLine = $fileReader->checkError($readByLine['error']);
+    if (array_key_exists('error', $readByLine))
+    {
+        $errorByLine = $fileReader->checkError($readByLine['error']);
+    }
 }
 
-$readBySymbols = $fileReader->readBySymbols('file.txt');
-if (array_key_exists('error', $readBySymbols))
-{
-    $errorBySymbols = $fileReader->checkError($readByLine['error']);
+$readBySymbols = $fileReader->readBySymbols(3,1);
+if(is_array($readBySymbols)){
+    if (array_key_exists('error', $readBySymbols))
+    {
+        $errorBySymbols = $fileReader->checkError($readByLine['error']);
+    }
+
 }
 
 include('templates/index.php');

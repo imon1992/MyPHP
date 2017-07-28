@@ -3,9 +3,9 @@
 include('config.php');
 include('libs/ReadFileAndReplace.php');
 
-$replacer = new ReadFileAndReplace();
+$replacer = new ReadFileAndReplace('file.txt');
 
-$replaceString = $replacer->replaceString('file.txt',2,'tu');
+$replaceString = $replacer->replaceString(3,'tu');
 if($replaceString !== true)
 {
     if (array_key_exists('error', $replaceString))
@@ -14,7 +14,7 @@ if($replaceString !== true)
     }
 }
 
-$replaceSymbol = $replacer->replaceSymbols('file.txt',3,'a');
+$replaceSymbol = $replacer->replaceSymbols(4,'a');
 if($replaceSymbol !==true)
 {
     if (array_key_exists('error', $replaceSymbol))

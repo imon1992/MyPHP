@@ -12,43 +12,43 @@
 </head>
 <body>
 
-<div class="row">
-    <div class="container">
+    <div class="row">
+        <div class="container">
         <table class="table">
             <tr>
-                <th>Read by Line</th>
-                <th>Read by Symbols</th>
+                <th>Replace String</th>
+                <th>Replace Symbol</th>
             </tr>
             <tr>
                 <td>
                     <?php
 
-                    if($errorByLine === null)
-                    {
-                        echo $readByLine;
-                    }else
-                    {
-                        echo $errorByLine;
-                    }
+                        if( $errorReplaceString === null)
+                        {
+                            echo 'String Successful replace';
+                        }else
+                        {
+                            echo  $errorReplaceString ;
+                        }
 
                     ?>
                 </td>
                 <td>
                     <?php
 
-                    if($errorBySymbols === null)
-                    {
-                        echo $readBySymbols;
-                    }else
-                    {
-                        echo $errorBySymbols;
-                    }
+                        if( $errorReplaceSymbol === null)
+                        {
+                            echo 'Symbol Successful replace';
+                        }else
+                        {
+                            echo  $errorReplaceSymbol;
+                        }
 
                     ?>
                 </td>
             </tr>
         </table>
-        <div
+    <div
 
 
 </body>

@@ -2,27 +2,34 @@
 
 class ReadFileAndReplace
 {
-    public function __construct()
+    protected $file;
+    protected $fileName;
+    protected $fileWayName;
+    public function __construct($fileName)
     {
+        $fileWayName = DIR_WITH_READ_FILES . '/' . $fileName;
+        $this->fileWayName = $fileWayName;
+        $this->fileName = $fileName;
+        $this->file = file($fileWayName);
     }
 
     public function __destruct()
     {
     }
 
-    private function checkDirFilePerm($fileName)
+    private function checkDirFilePerm()
     {
         if (is_dir(DIR_WITH_READ_FILES)) {
-            $fileWayName = DIR_WITH_READ_FILES . '/' . $fileName;
-            if (file_exists($fileWayName))
+
+            if (file_exists($this->fileWayName))
             {
-                $permission = substr(sprintf('%o', fileperms($fileWayName)), -3);
+                $permission = substr(sprintf('%o', fileperms($this->fileWayName)), -3);
                 if ($permission[0] > 4)
                 {
                     return true;
                 } else
                 {
-                    if (!chmod($fileWayName, 0755)) {
+                    if (!chmod($this->fileWayName, 0755)) {
                         return ['error' => 2];
                     }
                 }
@@ -36,33 +43,34 @@ class ReadFileAndReplace
         }
     }
 
-    public function readByLine($fileName)
+    public function readByLine($lineNumber)
     {
-        $fileWayName = DIR_WITH_READ_FILES . '/' . $fileName;
-        $checkResult = $this->checkDirFilePerm($fileName);
+        $checkResult = $this->checkDirFilePerm();
+
         if ($checkResult === true)
         {
             $lines = '';
-            $handle = fopen($fileWayName, "r");
-            if (!$handle)
+//            $handle = fopen($fileWayName, "r");
+            if (!$this->file)
             {
                 return ['error' => 3];
             }
 
-            while (($line = fgets($handle)) !== false)
-            {
-                $lines .= $line;
-            }
+//            while (($line = fgets($handle)) !== false)
+//            {
+//                $lines .= $line;
+//            }
 
-            if (!feof($handle))
-            {
-                return ['error' => 4];
-            }
+//            if (!feof($handle))
+//            {
+//                return ['error' => 4];
+//            }
 
-            fclose($handle);
+//            fclose($handle);
 
-            $linesArray = explode(PHP_EOL, $lines);
-            return $linesArray;
+//            $linesArray = explode(PHP_EOL, $lines);
+//            var_dump($this->file);
+            return $this->file[$lineNumber-1];
         } else
         {
             return $checkResult;
@@ -70,52 +78,38 @@ class ReadFileAndReplace
 
     }
 
-    public function readBySymbols($fileName)
+    public function readBySymbols($lineNumber,$symbolNumber)
     {
-        $fileWayName = DIR_WITH_READ_FILES . '/' . $fileName;
-        $checkResult = $this->checkDirFilePerm($fileName);
+        $checkResult = $this->checkDirFilePerm();
+
         if ($checkResult === true)
         {
-            $line = '';
-            $handle = fopen($fileWayName, "r");
-
-            if (!$handle)
+            if (!$this->file)
             {
                 return ['error' => 3];
             }
+            $line = $this->file[$lineNumber-1];
+            $symbolInLine = $line[$symbolNumber];
 
-            while (false !== ($char = fgetc($handle)))
-            {
-                $line .= $char;
-            }
-
-            if (!feof($handle))
-            {
-                return ['error' => 4];
-            }
-
-            fclose($handle);
-
-            $lines = explode(PHP_EOL, $line);
-            return $lines;
+            return $symbolInLine;
         } else
         {
             return $checkResult;
         }
     }
 
-    public function replaceString($fileName,$stringNumber,$onWhatReplace)
+    public function replaceString($stringNumber,$onWhatReplace)
     {
-        $fileWayName = DIR_WITH_READ_FILES . '/' . $fileName;
-        $checkResult = $this->checkDirFilePerm($fileName);
+//        $fileWayName = DIR_WITH_READ_FILES . '/' . $fileName;
+        $checkResult = $this->checkDirFilePerm();
         if ($checkResult === true)
         {
-            $linesArr = file($fileWayName);
+            $linesArr = $this->file;
 
             if($stringNumber > sizeof($linesArr))
                 return ['error' => 5];
 
-            return $this->saveChanges($fileWayName,$linesArr,$stringNumber,$onWhatReplace);
+            return $this->saveChanges($linesArr,$stringNumber,$onWhatReplace);
 
         }else
         {
@@ -123,12 +117,11 @@ class ReadFileAndReplace
         }
     }
 
-    public function replaceSymbols($fileName,$symbolNumber,$onWhatReplace)
+    public function replaceSymbols($symbolNumber,$onWhatReplace)
     {
-        $fileWayName = DIR_WITH_READ_FILES . '/' . $fileName;
-        $checkResult = $this->checkDirFilePerm($fileName);
+        $checkResult = $this->checkDirFilePerm();
         if ($checkResult === true) {
-            $fp = fopen($fileWayName, "r");
+            $fp = fopen($this->fileWayName, "r");
             if($fp === false)
             {
                 return ['error' => 3];
@@ -140,7 +133,7 @@ class ReadFileAndReplace
 
             if($symbolNumber > sizeof($arr))
                 return ['error' => 5];
-            return $this->saveChanges($fileWayName,$arr,$symbolNumber,$onWhatReplace);
+            return $this->saveChanges($arr,$symbolNumber,$onWhatReplace);
 
         }else
         {
@@ -148,10 +141,10 @@ class ReadFileAndReplace
         }
     }
 
-    public function saveChanges($fileWayName,$arr,$symbolOrLineNumber,$onWhatReplace){
+    public function saveChanges($arr,$symbolOrLineNumber,$onWhatReplace){
 
-        $firstarrElemlength = strlen($arr[0]);
-        $fp = fopen($fileWayName, "w");
+        $firstArrElemLength = strlen($arr[0]);
+        $fp = fopen($this->fileWayName, "w");
         if($fp === false){
             return ['error' => 3];
         }
@@ -161,7 +154,7 @@ class ReadFileAndReplace
         }
         unset($arr[$symbolOrLineNumber - 1]);
 
-        if($firstarrElemlength > 1)
+        if($firstArrElemLength > 1)
         {
 
             fputs($fp, $onWhatReplace. chr(13) . chr(10));
