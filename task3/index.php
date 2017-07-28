@@ -14,7 +14,7 @@ if(is_array($readByLine))
     }
 }
 
-$readBySymbols = $fileReader->readBySymbols(3,1);
+$readBySymbols = $fileReader->readBySymbols(1,1);
 if(is_array($readBySymbols)){
     if (array_key_exists('error', $readBySymbols))
     {

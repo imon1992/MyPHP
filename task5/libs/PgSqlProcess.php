@@ -1,6 +1,6 @@
 <?php
 
-//include ('iWorkData.php');
+include ('iWorkData.php');
 
 class PgSqlProcess implements iWorkData
 {
@@ -13,11 +13,9 @@ class PgSqlProcess implements iWorkData
     public function saveData($key,$val)
     {
         //$insertStr = $key . '=>' . $val;
-        $sql = "INSERT INTO \"user1\".\"PG_TEST\"(\"key\",\"data\")
-                VALUES('$key','$val') ";
-        var_dump($sql);
+        $sql = "INSERT INTO PG_TEST(\"key\",\"data\")
+                VALUES('$key','$val')";
         $queryResult = $this->query($sql);
-        var_dump($queryResult);
         if($queryResult === false)
             return ['error'=>8];
         return true;
@@ -26,7 +24,7 @@ class PgSqlProcess implements iWorkData
     public function getData($key)
     {
         $sql = "SELECT \"data\",\"key\"
-                FROM \"user1\".\"PG_TEST\"
+                FROM PG_TEST
                 WHERE \"key\" = '$key'";
         $queryResult = $this->query($sql);
         if($queryResult === false)
@@ -41,7 +39,7 @@ class PgSqlProcess implements iWorkData
 
     public function deleteData($key)
     {
-        $sql = "DELETE FROM \"user1\".\"PG_TEST\"
+        $sql = "DELETE FROM PG_TEST
                 WHERE \"key\"='$key'";
         $queryResult = $this->query($sql);
         if($queryResult === false)
@@ -51,9 +49,9 @@ class PgSqlProcess implements iWorkData
 
     public function connectToDb()
     {
-//         $link =pg_connect("host=localhost dbname=user1 user=user1 password=user1z");
-        //home connect
-        $link =pg_connect("host=localhost dbname=user1 user=postgres");
+         $link =pg_connect("host=localhost dbname=user1 user=user1 password=user1z");
+//        //home connect
+//        $link =pg_connect("host=localhost dbname=user1 user=postgres");
          if (!$link)
          {
            echo  die('Connect Error');
@@ -85,14 +83,15 @@ class PgSqlProcess implements iWorkData
 
 
  }
-//$a = new PgSqlProcess();
+$a = new PgSqlProcess();
 //$a->connectToDb();
 
 //var_dump($a->saveData('sumKey','100'));
-//var_dump($a->saveData('aaaa','ddd'));
-//var_dump($a->getData('aaaa'));
+//var_dump($a->saveData('aaa','ddd'));
+//var_dump($a->getData('aaa'));
 //var_dump($a->deleteData('aaaa'));
 
 
 
-
+//var_dump($a->query("SELECT \"key\",\"data\" FROM PG_TEST"));
+//var_dump($a->query("INSERT INTO PG_TEST(\"key\",\"data\") VALUES('sumKey','100')"));
