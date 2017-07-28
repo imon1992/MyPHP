@@ -3,9 +3,14 @@
 class PgSql extends Sql
 {
     protected $connect;
+
+    public function __construct()
+    {
+        $this->connectToDb();
+    }
+
     public function connectToDb()
     {
-
         //home connect
         $link =pg_connect("host=localhost dbname=user1 user=postgres");
         if (!$link) {

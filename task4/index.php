@@ -8,7 +8,6 @@ include ('config.php');
 
 
 $mySql = new MySql();
-$mySql->connectToDb();
 
 $insert = $mySql->insert('user1','MY_TEST')->values(['key1','data'],['user14','Add insert text'])->execute();
 $insertResult = $mySql->query($insert);
@@ -42,7 +41,6 @@ if($deleteResult === false)
 }
 
 $pgSql = new PgSql();
-$pgSql->connectToDb();
 
 $pgInsert = $pgSql->insert('user1','PG_TEST')->values(['key','data'],['user14','Add insert text'])->execute();
 $pgInsertResult = $pgSql->pgQuery($pgInsert);
