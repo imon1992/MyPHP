@@ -138,7 +138,7 @@ class Sql
             $result = $this->delet . $this->from . $this->where;
         }
         if($this->update !== null){
-            $result = $this->update . $this->set;
+            $result = $this->update . $this->set . $this->where;
         }
         if($this->insert !== null && $this->set !== null){
             $result = $this->insert . $this->set;
