@@ -1,6 +1,6 @@
 <?php
 
-include ('iWorkData.php');
+//include ('iWorkData.php');
 
 class MySqlProcess implements iWorkData
 {
@@ -13,25 +13,30 @@ class MySqlProcess implements iWorkData
     public function saveData($key,$val)
     {
         //$insertStr = $key . '=>' . $val;
-        $sql = "INSERT INTO MY_TEST(`key`,`data`)
+//        $sql = "INSERT INTO MY_TEST(`key`,`data`)
+//                VALUES('$key','$val') ";
+        //home sql
+        $sql = "INSERT INTO MY_TEST(`key1`,`data`)
                 VALUES('$key','$val') ";
-        var_dump($sql); 
         $queryResult = $this->query($sql);
-        var_dump($queryResult);
         if($queryResult === false)
-            return false;
+            return ['error'=>5];
         return true;
     }
 
     public function getData($key)
     {
-        $sql = "SELECT `data`,`key`
+//        $sql = "SELECT `data`,`key`
+//                FROM `MY_TEST`
+//                WHERE `key` = '$key'";
+        //home sql
+        $sql = "SELECT `data`,`key1`
                 FROM `MY_TEST`
-                WHERE `key` = '$key'";
+                WHERE `key1` = '$key'";
         $queryResult = $this->query($sql);
         if($queryResult === false)
         {
-            return false;
+            return ['error'=>6];
         }else
         {
             return $this->fetchAssoc($queryResult);
@@ -41,20 +46,25 @@ class MySqlProcess implements iWorkData
 
     public function deleteData($key)
     {
+//        $sql = "DELETE FROM `MY_TEST`
+//                WHERE `key`='$key'";
+        //home sql
         $sql = "DELETE FROM `MY_TEST`
-                WHERE `key`='$key'";
+                WHERE `key1`='$key'";
         $queryResult = $this->query($sql);
         if($queryResult === false)
-            return false;
+            return ['error'=>7];
         return true;
     }
     
     public function connectToDb()
     {
-        $link = mysql_connect('localhost', 'user1', 'tuser1');
+//        $link = mysql_connect('localhost', 'user1', 'tuser1');
+        //home connect
+        $link = mysql_connect('localhost', 'root', '');
          if (!$link)
          {
-           echo  die('Connect Error');
+           echo   die('Connect Error');
          }
        $this->connect = $link;
     }
@@ -74,9 +84,14 @@ class MySqlProcess implements iWorkData
         $dataArr = [];
         while ($row = mysql_fetch_assoc($resource))
         {   
-            $row["key"];
+//            $row["key"];
+//            $row["data"];
+//            $dataArr[$i]=[$row["key"],$row["data"]];
+//            $i++;
+            //home fetch
+            $row["key1"];
             $row["data"];
-            $dataArr[$i]=[$row["key"],$row["data"]];
+            $dataArr[$i]=[$row["key1"],$row["data"]];
             $i++;
         }
         return $dataArr;
@@ -103,6 +118,6 @@ mysql_close($link);
 //$a = new MySqlProcess();
 //var_dump($a->connectToDb());
 //var_dump($a->saveData('keyVvalue','value name'));
-//var_dump($a->getData('aa'));
+//var_dump($a->getData('keyVvalue'));
 //var_dump($a->deleteData('keyVvalue'));
 //var_dump($a->getData('keyVvalue'));

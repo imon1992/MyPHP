@@ -1,30 +1,44 @@
 <?php
 
-include ('iWorkData.php');
+//include ('iWorkData.php');
 class SessionProcess implements iWorkData
 {
      public function saveData($key,$val)
     {
-        session_start();
-        $_SESSION[$key] = $val;
+        if(!session_start())
+        {
+            return ['error'=>1];
+        }else
+        {
+            $_SESSION[$key] = $val;
+            return true;
+        }
     }
 
     public function getData($key)
     {
-        session_start();
-        return $_SESSION[$key];
+        if(!session_start())
+            return ['error'=>1];
+        if(isset($_SESSION[$key]))
+        {
+            return $_SESSION[$key];
+        }else
+        {
+            return ['error'=>0];
+        }
     }
 
     public function deleteData($key)
     {
-        session_start();
-        unset($_SESSION[$key]);
+        if(!session_start())
+            return ['error'=>1];
+        if(isset($_SESSION[$key]))
+        {
+            unset($_SESSION[$key]);
+            return true;
+        }else
+        {
+            return ['error'=>0];
+        }
     }
 }
-/*
-$c = new SessionProcess();
-$c->saveData('s','value');
-echo $c->getData('s');
-$c->deleteData('s');
-var_dump($c->getData('s'));
-*/

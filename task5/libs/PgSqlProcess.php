@@ -1,6 +1,6 @@
 <?php
 
-include ('iWorkData.php');
+//include ('iWorkData.php');
 
 class PgSqlProcess implements iWorkData
 {
@@ -19,7 +19,7 @@ class PgSqlProcess implements iWorkData
         $queryResult = $this->query($sql);
         var_dump($queryResult);
         if($queryResult === false)
-            return false;
+            return ['error'=>8];
         return true;
     }
 
@@ -31,7 +31,7 @@ class PgSqlProcess implements iWorkData
         $queryResult = $this->query($sql);
         if($queryResult === false)
         {
-            return false;
+            return ['error'=>9];
         }else
         {
             return $this->fetchAssoc($queryResult);
@@ -45,13 +45,15 @@ class PgSqlProcess implements iWorkData
                 WHERE \"key\"='$key'";
         $queryResult = $this->query($sql);
         if($queryResult === false)
-            return false;
+            return ['error'=>10];
         return true;
     }
 
     public function connectToDb()
     {
-         $link =pg_connect("host=localhost dbname=user1 user=user1 password=user1z");
+//         $link =pg_connect("host=localhost dbname=user1 user=user1 password=user1z");
+        //home connect
+        $link =pg_connect("host=localhost dbname=user1 user=postgres");
          if (!$link)
          {
            echo  die('Connect Error');
@@ -83,11 +85,13 @@ class PgSqlProcess implements iWorkData
 
 
  }
-$a = new PgSqlProcess();
+//$a = new PgSqlProcess();
 //$a->connectToDb();
 
-var_dump($a->saveData('sumKey','100'));
-var_dump($a->getData('sumKey'));
+//var_dump($a->saveData('sumKey','100'));
+//var_dump($a->saveData('aaaa','ddd'));
+//var_dump($a->getData('aaaa'));
+//var_dump($a->deleteData('aaaa'));
 
 
 

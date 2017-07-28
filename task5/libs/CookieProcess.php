@@ -1,21 +1,27 @@
 <?
-include ('iWorkData.php');
+//include ('iWorkData.php');
 class CookieProcess implements iWorkData
 {
     public function saveData($key,$val)
     {
-       if(setcookie($key, $val)) 
+       if(setcookie($key, $val,time()+3600))
        {
             return true;
        }else
         {
-            return false;
+            return ['error'=>2];
         } 
     }
 
     public function getData($key)
     {
-        return $_COOKIE[$key];
+        if($_COOKIE[$key] !== null)
+        {
+            return $_COOKIE[$key];
+        }else
+        {
+            return ['error'=>3];
+        }
     }
 
     public function deleteData($key)
@@ -25,7 +31,7 @@ class CookieProcess implements iWorkData
             return true;
         }else
         {
-            return false;
+            return ['error'=>4];
         }
     }   
 }
