@@ -1,0 +1,9 @@
+.inputError{
+    border-color: #ff0000;
+}
+.errorColor{
+    color: #ff0000;
+}
+.sentColor{
+    color: green;
+}
