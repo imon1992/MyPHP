@@ -13,11 +13,11 @@ class PgSqlProcess implements iWorkData
     public function saveData($key,$val)
     {
         //$insertStr = $key . '=>' . $val;
-        $sql = "INSERT INTO \"user1\".\"PG_TEST\"(\"key\",\"data\")
+        $sql = "INSERT INTO PG_TEST(\"key\",\"data\")
                 VALUES('$key','$val') ";
-        var_dump($sql);
+//        var_dump($sql);
         $queryResult = $this->query($sql);
-        var_dump($queryResult);
+//        var_dump($queryResult);
         if($queryResult === false)
             return ['error'=>8];
         return true;
@@ -26,7 +26,7 @@ class PgSqlProcess implements iWorkData
     public function getData($key)
     {
         $sql = "SELECT \"data\",\"key\"
-                FROM \"user1\".\"PG_TEST\"
+                FROM PG_TEST
                 WHERE \"key\" = '$key'";
         $queryResult = $this->query($sql);
         if($queryResult === false)
@@ -41,7 +41,7 @@ class PgSqlProcess implements iWorkData
 
     public function deleteData($key)
     {
-        $sql = "DELETE FROM \"user1\".\"PG_TEST\"
+        $sql = "DELETE FROM PG_TEST
                 WHERE \"key\"='$key'";
         $queryResult = $this->query($sql);
         if($queryResult === false)
@@ -51,12 +51,15 @@ class PgSqlProcess implements iWorkData
 
     public function connectToDb()
     {
-//         $link =pg_connect("host=localhost dbname=user1 user=user1 password=user1z");
+         $link =pg_connect("host=localhost dbname=user1 user=user1 password=user1z");
         //home connect
-        $link =pg_connect("host=localhost dbname=user1 user=postgres");
-         if (!$link)
+//        $link =pg_connect("host=localhost dbname=user1 user=postgres");
+//        if (!$link) {
+//            throw new Exception('connect error.');
+//        }
+        if (!$link)
          {
-           echo  die('Connect Error');
+             die('PG Connect Error');
          }
        $this->connect = $link;
     }
