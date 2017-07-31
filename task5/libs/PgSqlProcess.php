@@ -1,6 +1,6 @@
 <?php
 
-include ('iWorkData.php');
+//include ('iWorkData.php');
 
 class PgSqlProcess implements iWorkData
 {
@@ -52,9 +52,14 @@ class PgSqlProcess implements iWorkData
          $link =pg_connect("host=localhost dbname=user1 user=user1 password=user1z");
 //        //home connect
 //        $link =pg_connect("host=localhost dbname=user1 user=postgres");
-         if (!$link)
+        //home connect
+//        $link =pg_connect("host=localhost dbname=user1 user=postgres");
+//        if (!$link) {
+//            throw new Exception('connect error.');
+//        }
+        if (!$link)
          {
-           echo  die('Connect Error');
+             die('PG Connect Error');
          }
        $this->connect = $link;
     }
@@ -83,7 +88,7 @@ class PgSqlProcess implements iWorkData
 
 
  }
-$a = new PgSqlProcess();
+//$a = new PgSqlProcess();
 //$a->connectToDb();
 
 //var_dump($a->saveData('sumKey','100'));

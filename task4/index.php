@@ -1,11 +1,12 @@
 <?php
 
+include ('config.php');
 include_once ('libs/Sql.php');
 include_once ('libs/MySql.php');
 include_once ('libs/PgSql.php');
-include ('config.php');
+include ('libs/errorHundlerFunction.php');
 
-
+set_error_handler('myHandler', E_ALL);
 
 $mySql = new MySql();
 
@@ -39,6 +40,7 @@ if($deleteResult === false)
 {
     $deleteError = DELETE_ERROR;
 }
+
 
 $pgSql = new PgSql();
 

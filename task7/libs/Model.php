@@ -1,77 +1,167 @@
-<?php
+<?php 
+
 class Model
-{ 
-    public function __construct()
+{
+    protected $replaceArr =[];
+   public function __construct()
+   {
+        $this->setDefaultValues();
+        $this->replaceArr['%SUCCESSFUL_SENT%'] = '';
+   }
+   	
+	public function getArray()
+   {
+       return $this->replaceArr;
+   }
+    public function setDefaultValues()
     {
-
+        $this->replaceArr['%RIGHT_EMAIL%'] = '';
+        $this->replaceArr['%RIGHT_FULL_NAME%'] ='';
+        $this->replaceArr['%RIGHT_MESSAGE%'] = '';
+        $this->replaceArr['%FULL_NAME_ERROR%'] = '';
+        $this->replaceArr['%EMPTY_STRING_ERROR%'] = '';
+        $this->replaceArr['%WRONG_FULL_NAME%'] = '';
+        $this->replaceArr['%SUBJECT_ERROR%'] = '';
+        $this->replaceArr['%WRONG_EMAIL%']='';
+        $this->replaceArr['%EMAIL_ERROR%'] = '';
+        $this->replaceArr['%WRONG_MESSAGE%'] = '';
+        $this->replaceArr['%MESSAGE_EMPTY%'] = '';
+//            $this->replaceArr['%INPUT_ERROR%'] = '';
+        $this->replaceArr['%ERROR_COLOR%'] = '';
+        $this->replaceArr['%SUCCESSFUL_SENT%'] = 'Message successfully sent';
     }
+	
+	public function checkForm()
+	{
+        $formResult = 0;
+        if(!empty($_POST['email']))
+        {
+            if (!filter_var($_POST['email'], FILTER_VALIDATE_EMAIL)) {
+                $this->replaceArr['%WRONG_EMAIL%']='field error';
+                $this->replaceArr['%EMAIL_ERROR%'] = '';
+                $this->replaceArr['%RIGHT_EMAIL%'] = '';
+//                $this->replaceArr['%INPUT_ERROR%'] = 'inputError';
+                $this->replaceArr['%ERROR_COLOR%'] = 'errorColor';
 
-    public function getArray()
-    {        
-        return array('%TITLE%'=>'Contact Form', '%ERRORS%'=>'Empty field'); 
-    }
-
-    public function checkForm()
-    {
-        if (filter_var($email_a, FILTER_VALIDATE_EMAIL)) {
-            echo "E-mail ($email_a) указан верно.\n";
+            }else
+            {
+                $this->replaceArr['%RIGHT_EMAIL%'] = $_POST['email'];
+                $this->replaceArr['%EMAIL_ERROR%'] = '';
+                $this->replaceArr['%WRONG_EMAIL%'] = '';
+//                $this->replaceArr['%INPUT_ERROR%'] = '';
+                $formResult++;
+            }
+        }else
+        {
+            $this->replaceArr['%EMAIL_ERROR%'] = 'Empty field';
+            $this->replaceArr['%WRONG_EMAIL%'] = '';
+//            $this->replaceArr['%INPUT_ERROR%'] = 'inputError';
+            $this->replaceArr['%ERROR_COLOR%'] = 'errorColor';
+            $this->replaceArr['%RIGHT_EMAIL%'] = '';
         }
-<DOCTYPE html>
-<html lang="en">
-<head>
-<meta charset="utf-8">
-<meta http-equiv="X-UA-Compatible" content="IE=edge">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Bootstrap 101 Template</title>
 
-<!-- Bootstrap -->
-<link href="css/bootstrap.min.css" rel="stylesheet">
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
-integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
-</head>
-<body>
-    <form class="form-horizontal">
+        if(!empty($_POST['fullName']))
+        {
+            if(!(trim($_POST['fullName']) == ''))
+            {
+                if((strip_tags($_POST['fullName']) == $_POST['fullName']) &&
+                    !ctype_digit($_POST['fullName']))
+                {
+                    $this->replaceArr['%RIGHT_FULL_NAME%'] = trim($_POST['fullName']);
+                    $this->replaceArr['%WRONG_FULL_NAME%'] = '';
+                    $this->replaceArr['%EMPTY_STRING_ERROR%'] = '';
+//                    $this->replaceArr['%INPUT_ERROR%'] = '';
+                    $formResult++;
 
-  <div class="form-group">
-    <label for="inputPassword3" class="col-sm-2 control-label">Full Name</label>
-    <div class="col-sm-10 col-md-4">
-      <input type="text" class="form-control" id="inputPassword3" placeholder="Full Name">
-    </div>
-  </div>
-  <div class="form-group">
-    <label for="inputPassword3" class="col-sm-2 control-label">Subject</label>
-              <span class="input-group-btn">
-        <button class="btn btn-default" type="button">Go!</button>
-      </span>
-      <div class="col-sm-10 col-md-4">
-      <input type="text" class="form-control" id="inputPassword3" placeholder="Subject">
-    </div>
-  </div>
-  <div class="form-group">
-    <label for="inputEmail3" class="col-sm-2 control-label">Email</label>
-    <div class="col-sm-10 col-md-4">
-      <input type="email" class="form-control" id="inputEmail3" placeholder="Email">
-    </div>
-  </div>
-    <div class="form-group">
-    <label for="inputEmail3" class="col-sm-2 control-label">Message</label>
-    <div class="col-sm-10 col-md-4">
-      <textarea class="form-control" rows="3"></textarea>
-    </div>
-  </div>
-  <div class="form-group">
-    <div class="col-sm-offset-2 col-sm-10">
-      <button type="submit" class="btn btn-default">Send Message</button>
-    </div>
-  </div>
-</form>
-</body>
-        return true;            
-    }
+                }else
+                {
+                    $this->replaceArr['%WRONG_FULL_NAME%'] = 'ne verna9 stroka';
+                    $this->replaceArr['%EMPTY_STRING_ERROR%'] = '';
+                    $this->replaceArr['%RIGHT_FULL_NAME%'] = '';
+//                    $this->replaceArr['%INPUT_ERROR%'] = 'inputError';
+                    $this->replaceArr['%ERROR_COLOR%'] = 'errorColor';
+                }
+            }
+            else
+            {
+                $this->replaceArr['%EMPTY_STRING_ERROR%'] = 'empty string';
+//                $this->replaceArr['%INPUT_ERROR%'] = 'inputError';
+                $this->replaceArr['%ERROR_COLOR%'] = 'errorColor';
+                $this->replaceArr['%RIGHT_FULL_NAME%'] = '';
+            }
+        }else{
+            $this->replaceArr['%EMPTY_STRING_ERROR%'] = 'empty string';
+            $this->replaceArr['%WRONG_FULL_NAME%'] = '';
+//            $this->replaceArr['%INPUT_ERROR%'] = 'inputError';
+            $this->replaceArr['%ERROR_COLOR%'] = 'errorColor';
+            $this->replaceArr['%RIGHT_FULL_NAME%'] = '';
+        }
 
-    public function sendEmail()
-    {
-        // return mail()
-    }       
+        if(!empty($_POST['subject']) && ($_POST['subject'] != 'Select Subject'))
+        {
+            if($_POST['subject'] == 'subject 1')
+                $this->replaceArr['%SELECTED_SUBJECT1%']='selected';
+            if($_POST['subject'] == 'subject 2')
+                $this->replaceArr['%SELECTED_SUBJECT2%']='selected';
+            if($_POST['subject'] == 'subject 3')
+                $this->replaceArr['%SELECTED_SUBJECT3%']='selected';
+
+            $this->replaceArr['%TRUE_SUBJECT%'] = $_POST['subject'];
+            $this->replaceArr['%SUBJECT_ERROR%'] = '';
+            $formResult++;
+//            $this->replaceArr['%INPUT_ERROR%'] = '';
+        }else
+        {
+            $this->replaceArr['%SUBJECT_ERROR%'] = 'select drgu0 subject';
+//            $this->replaceArr['%INPUT_ERROR%'] = 'inputError';
+            $this->replaceArr['%ERROR_COLOR%'] = 'errorColor';
+        }
+
+        if(!empty($_POST['message']))
+        {
+            if(!(trim($_POST['message']) == ''))
+            {
+                if(strip_tags($_POST['message']) == $_POST['message'])
+                {
+                    $this->replaceArr['%RIGHT_MESSAGE%'] = trim($_POST['message']);
+                    $this->replaceArr['%WRONG_MESSAGE%'] = '';
+                    $this->replaceArr['%MESSAGE_EMPTY%'] = '';
+//                    $this->replaceArr['%INPUT_ERROR%'] = '';
+                    $formResult++;
+
+                }else
+                {
+                    $this->replaceArr['%WRONG_MESSAGE%'] = 'ne verna9 stroka soobsheni9';
+                    $this->replaceArr['%MESSAGE_EMPTY%'] = '';
+//                    $this->replaceArr['%INPUT_ERROR%'] = 'inputError';
+                    $this->replaceArr['%ERROR_COLOR%'] = 'errorColor';
+                    $this->replaceArr['%RIGHT_MESSAGE%'] = '';
+                }
+            }
+
+        }else
+        {
+            $this->replaceArr['%MESSAGE_EMPTY%'] = 'message empty';
+            $this->replaceArr['%WRONG_MESSAGE%'] = '';
+//            $this->replaceArr['%INPUT_ERROR%'] = 'inputError';
+            $this->replaceArr['%ERROR_COLOR%'] = 'errorColor';
+            $this->replaceArr['%RIGHT_MESSAGE%'] = '';
+        }
+
+        if($formResult == 4){
+            return true;
+        }else
+        {
+            return false;
+        }
+	}
+   
+	public function sendEmail()
+	{
+        $to = 'andrey.kolotii@gmail.com';
+        $subject = $_POST['subject'];
+        $messageText = wordwrap($_POST['message'], 70, "\r\n");
+        $message = "From ".$_POST['fullName'] .PHP_EOL . $_POST['email'].PHP_EOL.'Subject: '.$_POST['subject'].PHP_EOL .$messageText;
+        return mail($to,$subject,$message);
+	}		
 }
-

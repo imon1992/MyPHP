@@ -16,7 +16,7 @@ class MySql extends Sql
         //home connect
 //        $link = mysql_connect('localhost', 'root', '');
         if (!$link) {
-            return die('Connect Error');
+             die(' MySql Connect Error');
          }   
        $this->connect = $link;
      }

@@ -15,6 +15,7 @@ class CookieProcess implements iWorkData
 
     public function getData($key)
     {
+//var_dump($_COOKIE[$key]);
         if($_COOKIE[$key] !== null)
         {
             return $_COOKIE[$key];

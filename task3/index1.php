@@ -24,4 +24,4 @@ if($replaceSymbol !==true)
 }
 
 include('templates/index1.php');
-4
+

@@ -3,6 +3,10 @@
 include('config.php');
 include('libs/ReadFileAndReplace.php');
 
+include ('libs/errorHundlerFunction.php');
+
+set_error_handler('myHandler', E_ALL);
+
 $fileReader = new ReadFileAndReplace('file.txt');
 $readByLine = $fileReader->readByline(2);
 

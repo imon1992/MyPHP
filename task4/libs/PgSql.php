@@ -17,13 +17,21 @@ class PgSql extends Sql
         if(!$link)
          {
             die('Connect Error');
+//        try{
+//        }catch (Exception $e){
+//            echo $e->getMessage();
+//        }
+        //home connect
+//        $link =pg_connect("host=localhost dbname=user1 user=postgres");
+//            $link =pg_connect("host=localhost dbname=user1 user=user1 password=user1z");
+//        if (!$link) {
+//            die('PG Connect Error');
         }
         $this->connect = $link;
     }
 
     public function pgQuery($query)
     {
-//        mysql_select_db('user1',$this->connect);
 
         $result = pg_query($this->connect, $query);
 
@@ -35,9 +43,9 @@ class PgSql extends Sql
         $i =0;
         $dataArr = [];
         while ($row = pg_fetch_assoc($resource)) {
-            $row["key1"];
+            $row["key"];
             $row["data"];
-            $dataArr[$i]=[$row["key1"],$row["data"]];
+            $dataArr[$i]=[$row["key"],$row["data"]];
             $i++;
         }
         return $dataArr;
