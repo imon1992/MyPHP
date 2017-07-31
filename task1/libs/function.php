@@ -1,20 +1,47 @@
 <?php
 
+
+function checkDirFilePerm()
+{
+    if(file_exists(FULL_WAY_TO_UPLOAD_DIR))
+    {
+        $permission = substr(sprintf('%o', fileperms(FULL_WAY_TO_UPLOAD_DIR)), -3);
+        if ($permission[0] > 4)
+        {
+            return true;
+        } else
+        {
+            if (!chmod($this->fileWayName, 0755)) {
+                return ['error' => 2];
+            }
+            return true;
+        }
+    }else
+    {
+        if(mkdir(FULL_WAY_TO_UPLOAD_DIR, 0755))
+        {
+            return true;
+        }else
+        {
+            return ['error'=>1];
+        }
+
+    }
+}
+
 function uploadFile()
 {
-// uploaddir - FULLWAY
-    $uploadDir = FULLWAY . "/uploadFiles";
-    $uploadFileWay = $uploadDir . '/' . basename($_FILES['userfile']['name']);
+    $uploadFileWay = FULL_WAY_TO_UPLOAD_DIR . '/' . basename($_FILES['userfile']['name']);
     if (move_uploaded_file($_FILES['userfile']['tmp_name'], $uploadFileWay)) {
         return true;
     } else {
-        return false;
+        return ['error'=>3];
     }
 }
 
 function checkFilesSize($fileName)
 {
-    $fullWayToFile = FULLWAY . "/uploadFiles/$fileName";
+    $fullWayToFile = FULL_WAY_TO_UPLOAD_DIR . "/$fileName";
     if (file_exists($fullWayToFile)) {
         $fileSizeInBKbMb = filesize($fullWayToFile);
         if ($fileSizeInBKbMb > 1000) {
@@ -22,6 +49,9 @@ function checkFilesSize($fileName)
         } else {
             $fileSizeInBKbMb = $fileSizeInBKbMb . 'b';
         }
+    }else
+    {
+        return ['error'=>4];
     }
     return $fileSizeInBKbMb;
 }
@@ -38,51 +68,65 @@ function checkSize($byteCount)
 
 function deleteFile($fileName)
 {
-    $fullWayToFile = FULLWAY . "/uploadFiles/$fileName";
+    $fullWayToFile = FULL_WAY_TO_UPLOAD_DIR . "/$fileName";
     if (file_exists($fullWayToFile)) {
-        unlink($fullWayToFile);
+        if(!unlink($fullWayToFile))
+            return ['error'=>5];
         return true;
     } else {
-        return false;
+        return ['error'=>4];
     }
 }
 
 
 function fileInDir()
 {
-    $filesInDir = [];
-    $fullWayToDir = FULLWAY . "/uploadFiles";
-    $allFilesInDir = scandir($fullWayToDir);
+    $checkResult = checkDirFilePerm();
+    if($checkResult)
+    {
+        $filesInDir = [];
+        $allFilesInDir = scandir(FULL_WAY_TO_UPLOAD_DIR);
 
-    for ($i = 0; $i < sizeof($allFilesInDir); $i++) {
-        if (!is_dir($allFilesInDir[$i])) {
-            $filesInDir[$i] = $allFilesInDir[$i];
+        for ($i = 0; $i < sizeof($allFilesInDir); $i++) {
+            if (!is_dir($allFilesInDir[$i])) {
+                $filesInDir[$i] = $allFilesInDir[$i];
+            }
         }
+        if(sizeof($filesInDir) == 0)
+            return false;
+        return $filesInDir;
+    }else
+    {
+        return $checkResult;
     }
-    return $filesInDir;
 }
 
-function drawTable()
-{
-    $filesInDir = fileInDir();
-    if (empty($filesInDir)) {
-        return false;
+function myHandler($level, $message, $file, $line, $context) {
+    switch ($level) {
+        case E_WARNING:
+            $type = 'Warning';
+            break;
+        case E_NOTICE:
+            $type = 'Notice';
+            break;
+        default;
+            return false;
     }
-    $tableHeader = '  <table border="1">
-                        <caption>User Files</caption>
-                       <tr>
-                        <th>№</th>
-                        <th>File Name</th>
-                        <th>Size</th>
-                        <th>Action</th>
-                       </tr>';
-    echo $tableHeader;
-    $f = 0;
-    $filesInDir = array_values($filesInDir);
-    for ($i = 1; $i <= sizeof($filesInDir); $i++) {
-        $fileSize = checkFilesSize($filesInDir[$f]);
-        echo '<tr>';
-        echo "<td> $i </td>" . "<td> $filesInDir[$f] </td>" . "<td> $fileSize </td>" . "<td><a href='index.php?del=$filesInDir[$f]'.>delete</a></td>";
-        $f++;
+    return true;
+}
+
+function errors($errorNumber){
+    switch ($errorNumber) {
+        case 1:
+            return MK_DIR_ERROR;
+        case 2:
+            return PEM_ERROR;
+        case 3:
+            return MOVE_UPLOAD_ERROR;
+        case 4:
+            return FILE_EXIST_ERROR;
+        case 5:
+            return DELETED_ERROR;
     }
 }
+
