@@ -30,9 +30,9 @@ class Sql
          return $this;
      }
 
-     public function from($baseName,$tableName)
+     public function from($tableName)
      {
-         $from = " FROM  \"$baseName\".\"$tableName\" ";
+         $from = " FROM  $tableName ";
          $this->from .= $from;
          return $this;
      }
@@ -62,9 +62,9 @@ class Sql
         return $this;
     }
 
-    public function update($baseName,$tName)
+    public function update($tName)
     {
-        $update = "UPDATE \"$baseName\".\"$tName\"";
+        $update = "UPDATE $tName";
         $this->update = $update;
         return $this;
     }   
@@ -88,9 +88,9 @@ class Sql
         return $this;
     }
 
-    public function insert($baseName,$tName)
+    public function insert($tName)
     {
-        $insert = "INSERT INTO \"$baseName\".\"$tName\" ";
+        $insert = "INSERT INTO $tName ";
         $this->insert = $insert;
         return $this;
     }
