@@ -18,7 +18,7 @@ function checkDirFilePerm()
         }
     }else
     {
-        if(mkdir(FULL_WAY_TO_UPLOAD_DIR, 0777)5)
+        if(mkdir(FULL_WAY_TO_UPLOAD_DIR, 0777))
         {
             return true;
         }else

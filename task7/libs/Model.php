@@ -158,10 +158,12 @@ class Model
    
 	public function sendEmail()
 	{
-        $to = 'andrey.kolotii@gmail.com';
+        $to = 'mvlov@geeksforless.net';
         $subject = $_POST['subject'];
         $messageText = wordwrap($_POST['message'], 70, "\r\n");
-        $message = "From ".$_POST['fullName'] .PHP_EOL . $_POST['email'].PHP_EOL.'Subject: '.$_POST['subject'].PHP_EOL .$messageText;
-        return mail($to,$subject,$message);
+        $message = "From ".$_POST['fullName'] .PHP_EOL . $_POST['email'].PHP_EOL.'Subject: '.$_POST['subject'].PHP_EOL
+                    .'Ip: ' . $_SERVER['REMOTE_ADDR'] . PHP_EOL . $messageText;
+        $mailResult = mail($to,$subject,$message);
+        return $mailResult;
 	}		
 }

@@ -13,20 +13,20 @@ set_error_handler('myHandler', E_ALL);
 
 
 $cookie = new CookieProcess();
-$cookieSaveResult = $cookie->saveData('myCooki','new value');
+$cookieSaveResult = $cookie->saveData('myCook','new value');
 if($cookieSaveResult !== true)
 {
     $cookieSaveError = errors($cookieGetResult['error']);
 }
-
-$cookieGetResult = $cookie->getData('myCooki');
+//var_dump($_COOKIE['myCooki']);
+$cookieGetResult = $cookie->getData('myCook');
 if(is_array($cookieGetResult))
 {
     if(array_key_exists('error',$cookieGetResult))
         $cookieGetError = errors($cookieGetResult['error']);
 }
 
-$cookieDeletedResult = $cookie->deleteData('myCooki');
+$cookieDeletedResult = $cookie->deleteData('myCook');
 if($cookieDeletedResult !== true)
 {
     $cookieDeletedError = errors($cookieDeletedResult['error']);

@@ -15,13 +15,13 @@ class CookieProcess implements iWorkData
 
     public function getData($key)
     {
-//var_dump($_COOKIE[$key]);
-        if($_COOKIE[$key] !== null)
+        $cookieResult = $_COOKIE[$key];
+         if($cookieResult !== null)
         {
-            return $_COOKIE[$key];
+            return $cookieResult;
         }else
         {
-            return ['error'=>3];
+        return ['error'=>3];
         }
     }
 
