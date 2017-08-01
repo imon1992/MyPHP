@@ -4,7 +4,7 @@
 include_once('config.php');
 include_once("libs/function.php");
 
-//set_error_handler('myHandler', E_ALL);
+set_error_handler('myHandler', E_ALL);
 
 
 if ($_FILES['userfile']['error'] === 0)

@@ -6,7 +6,7 @@ function checkDirFilePerm()
     if(file_exists(FULL_WAY_TO_UPLOAD_DIR))
     {
         $permission = substr(sprintf('%o', fileperms(FULL_WAY_TO_UPLOAD_DIR)), -3);
-        if ($permission[0] > 6 )
+        if ($permission[0] > 4 )
         {
             return true;
         } else
@@ -18,7 +18,7 @@ function checkDirFilePerm()
         }
     }else
     {
-        if(mkdir(FULL_WAY_TO_UPLOAD_DIR, 0777))
+        if(mkdir(FULL_WAY_TO_UPLOAD_DIR, 0755,true))
         {
             return true;
         }else

@@ -158,7 +158,7 @@ class Model
    
 	public function sendEmail()
 	{
-        $to = 'mvlov@geeksforless.net';
+        $to = 'vpavlov@geeksforless.net';
         $subject = $_POST['subject'];
         $messageText = wordwrap($_POST['message'], 70, "\r\n");
         $message = "From ".$_POST['fullName'] .PHP_EOL . $_POST['email'].PHP_EOL.'Subject: '.$_POST['subject'].PHP_EOL
