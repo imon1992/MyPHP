@@ -14,18 +14,20 @@
 
 <div class="row">
     <div class="container">
-        <table class="table">
+        <table class="table" style="    table-layout: fixed; /* Фиксированная ширина ячеек */
+    width: 100%; /* Ширина таблицы */">
             <tr>
                 <th>Read by Line</th>
                 <th>Read by Symbols</th>
             </tr>
             <tr>
-                <td>
+                <td style="height: 550px">
                     <?php
 
                     if($errorByLine === null)
                     {
-                        echo $readByLine;
+                        foreach($readByLine as $value)
+                            echo $value;
                     }else
                     {
                         echo $errorByLine;
@@ -33,12 +35,13 @@
 
                     ?>
                 </td>
-                <td>
+                <td style="height: 550px">
                     <?php
 
                     if($errorBySymbols === null)
                     {
-                        echo $readBySymbols;
+                        foreach($readBySymbols as $value)
+                            echo $value;
                     }else
                     {
                         echo $errorBySymbols;
@@ -48,8 +51,8 @@
                 </td>
             </tr>
         </table>
-        <div
+        </div>
 
-
+</div>
 </body>
 </html>

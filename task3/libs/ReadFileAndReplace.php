@@ -47,6 +47,9 @@ class ReadFileAndReplace
     {
         $checkResult = $this->checkDirFilePerm();
 
+        if($lineNumber>sizeof($this->file)-1)
+            return 'The lines ran out';
+
         if ($checkResult === true)
         {
             $lines = '';
@@ -70,7 +73,7 @@ class ReadFileAndReplace
 
 //            $linesArray = explode(PHP_EOL, $lines);
 //            var_dump($this->file);
-            return $this->file[$lineNumber-1];
+            return $this->file[$lineNumber];
         } else
         {
             return $checkResult;
@@ -82,13 +85,18 @@ class ReadFileAndReplace
     {
         $checkResult = $this->checkDirFilePerm();
 
+        if($lineNumber>sizeof($this->file)-1)
+            return 'The lines ran out';
+        if($symbolNumber > strlen($this->file[$lineNumber])-1)
+            return 'The symbols ran out';
+
         if ($checkResult === true)
         {
             if (!$this->file)
             {
                 return ['error' => 3];
             }
-            $line = $this->file[$lineNumber-1];
+            $line = $this->file[$lineNumber];
             $symbolInLine = $line[$symbolNumber];
 
             return $symbolInLine;

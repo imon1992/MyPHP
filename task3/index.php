@@ -8,7 +8,15 @@ include ('libs/errorHundlerFunction.php');
 set_error_handler('myHandler', E_ALL);
 
 $fileReader = new ReadFileAndReplace('file.txt');
-$readByLine = $fileReader->readByline(2);
+
+for($i=0; ;$i++)
+{
+    $readByLineResult = $fileReader->readByline($i);
+    if ($readByLineResult === 'The lines ran out')
+        break 1;
+    $readByLine[] = $readByLineResult;
+
+}
 
 if(is_array($readByLine))
 {
@@ -18,7 +26,18 @@ if(is_array($readByLine))
     }
 }
 
-$readBySymbols = $fileReader->readBySymbols(1,1);
+for($i=0; ;$i++)
+{
+    for($j=0; ;$j++) {
+        $readBySymbolsResult = $fileReader->readBySymbols($i, $j);
+        if ($readBySymbolsResult === 'The lines ran out')
+            break 2;
+        if ($readBySymbolsResult === 'The symbols ran out')
+            break 1;
+        $readBySymbols[$i] .= $readBySymbolsResult;
+    }
+}
+
 if(is_array($readBySymbols)){
     if (array_key_exists('error', $readBySymbols))
     {
