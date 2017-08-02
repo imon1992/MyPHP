@@ -4,7 +4,7 @@ class HtmlHelper
 {
     public static function select($name,$optionCount,$optionValuesArr,$selectedOptionNumber =false,$size=1,$multiple=false)
     {
-       $select = '<select class="form-control';
+       $select = '<select class="form-control" ';
         if($size>1)
         {
             $selectSize = ' size='."'$size'";
@@ -28,9 +28,9 @@ class HtmlHelper
         {
             if($i === $selectedOptionNumber)
             {
-                $optionSelect .= 'selected ';
+                $selectedOption = 'selected ';
             } 
-            $option .= "<option $optionSelect velue='"."'$optionValuesArr[$i]'> $optionValuesArr[$i]</option>";
+            $option .= "<option $selectedOption value="."'$optionValuesArr[$i]'> $optionValuesArr[$i]</option>";
         }
         $select .= $option;
         $select .= '</select>';
@@ -39,7 +39,7 @@ class HtmlHelper
 
     public static function ulOl($ulOl,$liCount,$liValueArr)
     {
-        $list = '<'.$ulOl.' class="list-unstyled">';
+        $list = '<'.$ulOl.'>';
         for($i=0;$i<$liCount;$i++)
         {
             $list .= '<li>' . $liValueArr[$i] . '</li>';
@@ -48,10 +48,17 @@ class HtmlHelper
         return $list;
     }
 
-    public static function table($tableCaption=false,$trCount,$tdCount,$tdValuesArr,$thValuesArr=false)
+    public static function table($tableCaption=false,$trCount,$tdCount,$tdValuesArr,$thValuesArr=false,$align=false)
     {
-        $table = '<table class="table">';
-        
+        if($align !== false)
+        {
+            $tableAlign = 'align="' . $align . '"';
+            $table = '<table '. $tableAlign .' class="table">';
+        }else
+        {
+            $table = '<table class="table">';
+        }
+
         if($tableCaption !==false)
         {
             $table .= '<caption>' . $tableCaption . '</caption>';
@@ -63,7 +70,7 @@ class HtmlHelper
             $thCount = sizeof($thValuesArr);
             for($i=0;$i<$thCount;$i++)
             {
-                $table .= '<td>' . $thValuesArr . '</td>';
+                $table .= '<td>' . $thValuesArr[$i] . '</td>';
             }
         }
 
@@ -72,22 +79,110 @@ class HtmlHelper
         {
             $table .= '<tr>';
                 for($j=0;$j<$tdCount;$j++)
-                {           
-                   $table .= '<td>' . $tdValuesArr[$i][$j] . '<td>'; 
+                {
+                   $table .= '<td>' . $tdValuesArr[$i][$j] . '</td>';
                 }
             $table .= '</tr>';
         }
-        print_r($table);
+        $table .= '</table>';
+
+        return $table;
 
     }
+
+    public static function radio($radioCount,$radioValuesArr,$radioName,$inline =false,$radioCheckedNumber=false)
+    {
+        if($inline !=false)
+        {
+            $radio = '';
+            for($i=0;$i<$radioCount;$i++)
+            {
+                if($radioCheckedNumber != false && $radioCheckedNumber == $i+1)
+                {
+                    $radio .= '<label class="radio-inline">'. '<input type="radio" ' . 'name="'.$radioName .'" value="' . $radioValuesArr[$i] .'" checked>'
+                        . $radioValuesArr[$i] . '</label>';
+
+                }else
+                {
+                $radio .= '<label class="radio-inline">' . '<input type="radio" ' . 'name="'.$radioName.'" value="' . $radioValuesArr[$i] .'">'
+                            . $radioValuesArr[$i] . '</label>';
+                }
+
+            }
+        }else
+        {
+            $radio ='';
+            for($i=0;$i<$radioCount;$i++)
+            {
+                if($radioCheckedNumber != false && $radioCheckedNumber == $i+1)
+                {
+                    $radio .= '<div class="radio">';
+                    $radio .= '<label> <input type="radio" name="'.$radioNamesArr[$i] .'" value="' . $radioValuesArr[$i]  . '" checked>'
+                            . $radioValuesArr[$i] . '</label> </div>' ;
+                }else
+                {
+                    $radio .= '<div class="radio">';
+                    $radio .= '<label> <input type="radio" name="'.$radioNamesArr[$i] .'" value="' . $radioValuesArr[$i]  . '">'
+                        . $radioValuesArr[$i] . '</label> </div>' ;
+                }
+
+            }
+        }
+        return $radio;
+
+    }
+
+    public static function checkBox($checkCount,$checkValuesArr,$checkNamesArr,$inline =false,$checkCheckedNumber=false)
+    {
+        if($inline !=false)
+        {
+            $checkBox = '';
+            for($i=0;$i<$checkCount;$i++)
+            {
+                if($checkCheckedNumber != false && $checkCheckedNumber == $i+1)
+                {
+                    $checkBox .= '<label class="checkbox-inline">'. '<input type="checkbox" ' . 'name="'.$checkNamesArr[$i].'" value="'
+                        . $checkValuesArr[$i] .'" checked>' . $checkValuesArr[$i] . '</label>';
+
+                }else
+                {
+                    $checkBox .= '<label class="checkbox-inline">' . '<input type="checkbox" ' . 'name="'.$checkNamesArr[$i].'" value="'
+                        . $checkValuesArr[$i] .'">' . $checkValuesArr[$i] . '</label>';
+                }
+
+            }
+        }else
+        {
+            $checkBox ='';
+            for($i=0;$i<$checkCount;$i++)
+            {
+                if($checkCheckedNumber != false && $checkCheckedNumber == $i+1)
+                {
+                    $checkBox .= '<div class="checkbox">';
+                    $checkBox .= '<label> <input type="checkbox" name="'.$checkNamesArr[$i] .'" value="' . $checkValuesArr[$i]  . '" checked>'
+                        . $checkValuesArr[$i] . '</label> </div>' ;
+                }else
+                {
+                    $checkBox .= '<div class="checkbox">';
+                    $checkBox .= '<label> <input type="checkbox" name="'.$checkNamesArr[$i] .'" value="' . $checkValuesArr[$i]  . '">'
+                        . $checkValuesArr[$i] . '</label> </div>' ;
+                }
+
+            }
+        }
+        return $checkBox;
+
+    }
+
+
 }
-$c = 'HtmlHelper';
-
-$f = HtmlHelper::select('sumeName', 3, ['Sum tenx','Mere text', 'else more text'],2);
-
-$g = HtmlHelper::ulOl('ol',3,['first','second','last']);
-
-HtmlHelper::table('Obuv',2,2,[['12',12],[34,45]]);
-echo $f;
-var_dump($f);
+//$c = 'HtmlHelper';
+//
+//$f = HtmlHelper::select('sumeName', 3, ['Sum tenx','Mere text', 'else more text'],2);
+//
+//$g = HtmlHelper::ulOl('ol',3,['first','second','last']);
+//
+//HtmlHelper::table('Obuv',2,2,[['12',12],[34,45]]);
+//echo $f;
+//var_dump($f);
 //$f = $c->select('sumeName', 3, ['Sum tenx','Mere text', 'else more text'],2);

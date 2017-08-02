@@ -161,8 +161,8 @@ class Model
         $to = 'vpavlov@geeksforless.net';
         $subject = $_POST['subject'];
         $messageText = wordwrap($_POST['message'], 70, "\r\n");
-        $message = "From ".$_POST['fullName'] .PHP_EOL . $_POST['email'].PHP_EOL.'Subject: '.$_POST['subject'].PHP_EOL
-                    .'Ip: ' . $_SERVER['REMOTE_ADDR'] . PHP_EOL . $messageText;
+        $message = "From ".$_POST['fullName'] .PHP_EOL . '<a href="mailto:'.$_POST['email'].'">'.$_POST['email'].'</a>'.PHP_EOL.'Subject: '
+                    .$_POST['subject'].PHP_EOL .'Ip: ' . $_SERVER['REMOTE_ADDR'] . PHP_EOL . $messageText;
         $mailResult = mail($to,$subject,$message);
         return $mailResult;
 	}		
