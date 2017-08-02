@@ -1,6 +1,6 @@
 <?php
 
-define("FULL_WAY_TO_UPLOAD_DIR",     "/usr/home/user14/public_html/MyPHP/task1/uploadFiles");
+define("FULL_WAY_TO_UPLOAD_DIR",     "/usr/home/user14/public_html/MyPHP/task1/uploadFilessss");
 //home way
 //define("FULL_WAY_TO_UPLOAD_DIR",     'C:\OpenServer\domains\php\MyPHP\task1\uploadFiles');
 define("MK_DIR_ERROR",     "Could not create folder");//1
