@@ -2,6 +2,7 @@
 class Sql
  {
 //    protected $sql;
+    protected $sqlOrder;
     protected $select;
     protected $from;
     protected $where;
@@ -27,6 +28,7 @@ class Sql
          $this->select= $select;
          if(array_search('*',$columns) !== false)
              $this->select= null;
+         $this->sqlOrder[] = 'select';
          return $this;
      }
 
@@ -34,6 +36,7 @@ class Sql
      {
          $from = " FROM  $tableName ";
          $this->from .= $from;
+         $this->sqlOrder[] = 'from';
          return $this;
      }
 
@@ -52,6 +55,7 @@ class Sql
              }
          }
          $this->where  .= $where;
+         $this->sqlOrder[] = 'where';
          return $this;
     }
 
@@ -59,6 +63,7 @@ class Sql
     {
         $delet = "DELETE ";
         $this->delet = $delet;
+        $this->sqlOrder[] = 'delet';
         return $this;
     }
 
@@ -66,6 +71,7 @@ class Sql
     {
         $update = "UPDATE $tName";
         $this->update = $update;
+        $this->sqlOrder[] = 'update';
         return $this;
     }   
 
@@ -85,6 +91,7 @@ class Sql
 
         }
         $this->set = $set;
+        $this->sqlOrder[] = 'set';
         return $this;
     }
 
@@ -92,6 +99,7 @@ class Sql
     {
         $insert = "INSERT INTO $tName ";
         $this->insert = $insert;
+        $this->sqlOrder[] = 'insert';
         return $this;
     }
     public function values($columnsArr,$paramsArr)
@@ -125,37 +133,32 @@ class Sql
         }
         $values .= ')';
         $this->values = $values;
+        $this->sqlOrder[] = 'values';
         return $this;
     }
-    
+
     public function execute()
     {
         $result = '';
-        if($this->select !== null){
-            $result = $this->select . $this->from . $this->where;
-        }
-        if($this->delet !== null){
-            $result = $this->delet . $this->from . $this->where;
-        }
-        if($this->update !== null){
-            $result = $this->update . $this->set . $this->where;
-        }
-        if($this->insert !== null && $this->set !== null){
-            $result = $this->insert . $this->set;
-        }
-        if($this->insert !== null && $this->values !== null){
-            $result = $this->insert . $this->values;
-        }
 
-        $this->select = null;
-        $this->from = null;
-        $this->where = null;
-        $this->delet= null;
-        $this->update= null;
-        $this->set= null;
-        $this->insert= null;
-        $this->values= null;
+        foreach($this->sqlOrder as $values)
+        {
+            $result .= $this->$values;
+            $this->$values = null;
+        }
+        $this->sqlOrder[] = null;
+
+//        foreach($this as$key=> $value)
+//        {
+////            $this->$key = null;
+//        }
 
         return $result;
     }
 }
+
+//$c = new Sql();
+//var_dump($c->insert('MY_TEST')->values(['key','data'],['user14','Add insert text'])->execute());
+//var_dump($c->select(['data'])->from('MY_TEST')->where(['key'],['user14'])->execute());
+//var_dump($c->update('MY_TEST')->set(['data'],['new value'])->execute());
+//var_dump($c->delet()->from('MY_TEST')->where(['key'],['user14'])->execute());

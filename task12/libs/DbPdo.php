@@ -18,7 +18,7 @@ class DbPdo extends Sql
 
     public function query($sql,$bindParamsArr = false)
     {
-        
+
     }
 //    public function prepareSql($sql)
 //    {

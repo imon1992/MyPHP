@@ -351,12 +351,9 @@ class Sql
         foreach($this->sqlOrder as $values)
         {
             $result .= $this->$values;
+            $this->$values = null;
         }
-
-        foreach($this as$key=> $value)
-        {
-            $this->$key = null;
-        }
+        $this->sqlOrder[] = null;
 
         return $result;
     }
