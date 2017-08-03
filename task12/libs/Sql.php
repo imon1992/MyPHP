@@ -1,7 +1,7 @@
 <?php
 
 class Sql
- {
+{
     protected $sqlOrder = [];
     protected $select;
     protected $from;
@@ -22,58 +22,58 @@ class Sql
     protected $orderBy;
     protected $limit;
 
-     public function select($columns)
-     {
-         $columnsCount = sizeof($columns);
-         $select = "SELECT ";
+    public function select($columns)
+    {
+        $columnsCount = sizeof($columns);
+        $select = "SELECT ";
 
-         for($i=0;$i<$columnsCount;$i++)
-         {
-             if($columnsCount == ($i+1))
-             {
-                 $select .=  '"' .$columns[$i] .'"';
-             }else
-             {
-                 $select .= '"' .$columns[$i] .'"' . ',';
-             }
-         }
+        for($i=0;$i<$columnsCount;$i++)
+        {
+            if($columnsCount == ($i+1))
+            {
+                $select .=  $columns[$i] ;
+            }else
+            {
+                $select .= $columns[$i]  . ',';
+            }
+        }
 
-         $this->select= $select;
-         if(array_search('*',$columns) !== false)
-             $this->select= null;
-         $this->sqlOrder[] = 'select';
+        $this->select= $select;
+        if(array_search('*',$columns) !== false)
+            $this->select= null;
+        $this->sqlOrder[] = 'select';
 
-         return $this;
-     }
+        return $this;
+    }
 
-     public function from($tableName)
-     {
-         $from = " FROM  $tableName ";
-         $this->from .= $from;
-         $this->sqlOrder[] = 'from';
+    public function from($tableName)
+    {
+        $from = " FROM  $tableName ";
+        $this->from .= $from;
+        $this->sqlOrder[] = 'from';
 
-         return $this;
-     }
-     public function where($columnsArr,$paramsArr)
-     {
-         $columnsCount = sizeof($columnsArr);
-         $where = " WHERE ";
+        return $this;
+    }
+    public function where($columnsArr,$paramsArr)
+    {
+        $columnsCount = sizeof($columnsArr);
+        $where = " WHERE ";
 
-         for($i=0;$i<$columnsCount;$i++)
-         {
-             if($columnsCount == ($i+1))
-             {
-                 $where .= '"'. $columnsArr[$i] . '"'  . '=' . "'" . $paramsArr[$i] . "'";
-             }else
-             {
-                 $where .= '"'. $columnsArr[$i] . '"' . '=' . "'" . $paramsArr[$i] . "'" . ' AND ';
-             }
-         }
+        for($i=0;$i<$columnsCount;$i++)
+        {
+            if($columnsCount == ($i+1))
+            {
+                $where .= $columnsArr[$i] . '=' .$paramsArr[$i];
+            }else
+            {
+                $where .= $columnsArr[$i] . '=' . $paramsArr[$i] . ' AND ';
+            }
+        }
 
-         $this->where  .= $where;
-         $this->sqlOrder[] = 'where';
+        $this->where  .= $where;
+        $this->sqlOrder[] = 'where';
 
-         return $this;
+        return $this;
     }
     public function delet()
     {
@@ -90,7 +90,7 @@ class Sql
         $this->sqlOrder[] = 'update';
 
         return $this;
-    }   
+    }
     public function set($columnsArr,$paramsArr)
     {
         $set = " SET ";
@@ -98,13 +98,13 @@ class Sql
 
         for($i=0;$i<$columnsCount;$i++)
         {
-              if($columnsCount == ($i+1))
-              {
-                  $set .= '"' . $columnsArr[$i] . '"' . '=' . "'" . $paramsArr[$i] . "'";
-              }else
-              {
-                  $set .= '"' . $columnsArr[$i] . '"' . '=' . "'" . $paramsArr[$i] . "'" . ',';
-              }
+            if($columnsCount == ($i+1))
+            {
+                $set .= $columnsArr[$i] . '=' . $paramsArr[$i] ;
+            }else
+            {
+                $set .= $columnsArr[$i] . '=' . $paramsArr[$i] .',';
+            }
         }
 
         $this->set = $set;
@@ -127,16 +127,16 @@ class Sql
         $values = ' VALUES (';
         $columnsCount = sizeof($columnsArr);
 
-         for($i=0;$i<$columnsCount;$i++)
-         {
-               if($columnsCount == ($i+1))
-               {
-                   $columns .= '"'. $columnsArr[$i] .'"' ;
-               }else
-              {
-                  $columns .= '"'. $columnsArr[$i] .'"' . ',';
-              }
-         }
+        for($i=0;$i<$columnsCount;$i++)
+        {
+            if($columnsCount == ($i+1))
+            {
+                $columns .= $columnsArr[$i] ;
+            }else
+            {
+                $columns .= $columnsArr[$i] .',';
+            }
+        }
 
         $this->insert .= $columns . ')';
         $paramsCount = sizeof($paramsArr);
@@ -145,10 +145,10 @@ class Sql
         {
             if($paramsCount == ($i+1))
             {
-                $values .= "'" . $paramsArr[$i] . "'";
+                $values .= $paramsArr[$i] ;
             }else
             {
-                $values .= "'" . $paramsArr[$i] . "'" . ',';
+                $values .= $paramsArr[$i] . ',';
             }
         }
 
@@ -168,10 +168,10 @@ class Sql
         {
             if($columnsCount == ($i+1))
             {
-                $selectDistinct .=  '"' .$columns[$i] .'"';
+                $selectDistinct .= $columns[$i] ;
             }else
             {
-                $selectDistinct .= '"' .$columns[$i] .'"' . ',';
+                $selectDistinct .= $columns[$i] .',';
             }
         }
 
@@ -206,14 +206,14 @@ class Sql
     }
 
     public function having($agrFunctionArr,$columnsArr,$singArr,$valuesArr)
-    {   
+    {
         $having = ' HAVING ';
         $agrFunctionCount = sizeof($agrFunctionArr);
 
         for($i=0;$i<$agrFunctionCount;$i++)
         {
             if($agrFunctionCount == $i+1)
-            {   
+            {
                 $having .= $agrFunctionArr[$i] .'(' . $columnsArr[$i] . ') ' . $singArr[$i] . ' ' . $valuesArr[$i];
             }else
             {
@@ -267,7 +267,7 @@ class Sql
         for($i=0;$i<$joinTableCount;$i++)
         {
             $innerJoin = ' INNER JOIN ' . $joinTableArr[$i] . ' ON ' . $onJoinTableArr[$i] . '.' .$onJoinFieldArr[$i] . ' = '
-                            .$joinTableArr[$i] .'.'.$joinFieldArr[$i];
+                .$joinTableArr[$i] .'.'.$joinFieldArr[$i];
         }
 
         $this->innerJoin = $innerJoin;
@@ -284,9 +284,9 @@ class Sql
         for($i=0;$i<$joinTableCount;$i++)
         {
             $leftJoin = ' LEFT OUTER JOIN ' . $joinTableArr[$i] . ' ON ' . $onJoinTableArr[$i] . '.' .$onJoinFieldArr[$i] . ' = '
-               .$joinTableArr[$i] .'.'.$joinFieldArr[$i];
+                .$joinTableArr[$i] .'.'.$joinFieldArr[$i];
         }
-        
+
         $this->leftJoin = $leftJoin;
         $this->sqlOrder[] = 'leftJoin';
 
@@ -302,7 +302,7 @@ class Sql
         for($i=0;$i<$joinTableCount;$i++)
         {
             $rightJoin = ' RIGHT OUTER JOIN ' . $joinTableArr[$i] . ' ON ' . $onJoinTableArr[$i] . '.' .$onJoinFieldArr[$i] . ' = '
-               .$joinTableArr[$i] .'.'.$joinFieldArr[$i];
+                .$joinTableArr[$i] .'.'.$joinFieldArr[$i];
         }
 
         $this->rightJoin = $rightJoin;
@@ -311,7 +311,7 @@ class Sql
         return $this;
 
     }
-    
+
     public function crossJoin($joinTableArr)
     {
         $crossJoin = '';
@@ -362,3 +362,21 @@ class Sql
     }
 }
 
+//$sql = new Sql();
+//$select = $sql->select(['key','data'])->from('MY_TEST')->where(['data','key'],[':data',':key'])->groupBy(['key','data'])->limit('1')->execute();
+////$innerJoin = $sql->select(['key','data'])->from('MY_TEST')->innerJoin(['table1'],['joinfield'],['MY_TEST'],['key'])
+////    ->orderBy(['key','joinfield'],['ask','desk'])->execute();
+////$having = $sql->select(['key','data'])->from('MY_TEST')->having(['AVG','MAX'],['key','data'],['>','='],[10,20])->execute();
+////$leftJoin = $sql->select(['key','data'])->from('MY_TEST')->leftJoin(['table1'],['joinfield'],['MY_TEST'],['key'])
+////    ->orderBy(['key','joinfield'],['ask','desk'])->execute();
+////$rightJoin = $sql->select(['key','data'])->from('MY_TEST')->rightJoin(['table1'],['joinfield'],['MY_TEST'],['key'])
+////    ->orderBy(['key','joinfield'],['ask','desk'])->execute();
+////$crossJoin = $sql->select(['key','data'])->from('MY_TEST')->crossJoin(['table1','table2'])->execute();
+////$naturalJoin = $sql->select(['key','data'])->from('MY_TEST')->naturalJoin(['table1','table2'])->execute();
+////$selectDistinct = $sql->selectDistinct(['key','data'])->from('MY_TEST')->where(['data','key'],[10,11])->groupBy(['key','data'])->limit('1')->execute();
+////$insert = $sql->insert('MY_TEST')->values(['key','data'],['user14','Add insert text'])->execute();
+////$update = $sql->update('MY_TEST')->set(['data'],['new value'])->execute();
+////$deleted = $sql->delet()->from('MY_TEST')->where(['key'],['user14'])->execute();
+////
+////var_dump($select,$innerJoin,$having,$leftJoin,$rightJoin,$crossJoin,$naturalJoin,$selectDistinct,$insert,$update,$deleted);
+//var_dump($select);
