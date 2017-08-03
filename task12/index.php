@@ -3,8 +3,11 @@
 include ('libs/Sql.php');
 include ('libs/DbPdo.php');
 
-$sql = new DbPdo();
-$select = $sql->select(['key','data'])->from('MY_TEST')->where(['data','key'],[':data',':key'])->groupBy(['key','data'])->limit('1')->execute();
+$sql = new DbPdo('mysql','localhost','user1','user1','tuser1');
+//$select = $sql->select(['key','data'])->from('MY_TEST')->where(['data','key'],[':data',':key'])->groupBy(['key','data'])->limit('1')->execute();
+//$sql->query($select,[':data'=>'parametr data',':key'=>'params key']);
+$sql->bindParams();
+
 //$innerJoin = $sql->select(['key','data'])->from('MY_TEST')->innerJoin(['table1'],['joinfield'],['MY_TEST'],['key'])
 //    ->orderBy(['key','joinfield'],['ask','desk'])->execute();
 //$having = $sql->select(['key','data'])->from('MY_TEST')->having(['AVG','MAX'],['key','data'],['>','='],[10,20])->execute();
@@ -20,4 +23,8 @@ $select = $sql->select(['key','data'])->from('MY_TEST')->where(['data','key'],['
 //$deleted = $sql->delet()->from('MY_TEST')->where(['key'],['user14'])->execute();
 //
 //var_dump($select,$innerJoin,$having,$leftJoin,$rightJoin,$crossJoin,$naturalJoin,$selectDistinct,$insert,$update,$deleted);
-var_dump($select);
+//var_dump($select);
+//var_dump('' ==false);
+
+//if('' == false)
+  //  echo 11111111;
