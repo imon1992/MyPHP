@@ -2,12 +2,15 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="355282d4-7f12-47a0-9ca1-bb3b32379a7a" name="Default" comment="">
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/task12/libs/.DbPdo.php.swp" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/task11/libs/.MySql.php.swp" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/task12/.index.php.swp" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/task11/libs/ActiveRecords.php" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/task11/libs/MySql.php" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/task1/uploadFilessss/test.sql" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/task12/libs/DbPdo.php" afterPath="$PROJECT_DIR$/task12/libs/DbPdo.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/task4/libs/MySql.php" afterPath="$PROJECT_DIR$/task4/libs/MySql.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/task12/libs/Sql.php" afterPath="$PROJECT_DIR$/task12/libs/Sql.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/task4/libs/Sql.php" afterPath="$PROJECT_DIR$/task4/libs/Sql.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/task4/index.php" afterPath="$PROJECT_DIR$/task4/index.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/task10/libs/Sql.php" afterPath="$PROJECT_DIR$/task10/libs/Sql.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/task12/index.php" afterPath="$PROJECT_DIR$/task12/index.php" />
     </list>
     <ignored path="MyPHP.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -47,8 +50,8 @@
       <file leaf-file-name="DbPdo.php" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/task12/libs/DbPdo.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.5851979" vertical-offset="0" max-vertical-offset="680">
-              <caret line="20" column="0" selection-start-line="20" selection-start-column="0" selection-end-line="20" selection-end-column="0" />
+            <state vertical-scroll-proportion="0.38037866" vertical-offset="357" max-vertical-offset="1224">
+              <caret line="34" column="0" selection-start-line="34" selection-start-column="0" selection-end-line="34" selection-end-column="0" />
               <folding />
             </state>
           </provider>
@@ -140,11 +143,11 @@
         <option value="$PROJECT_DIR$/task10/templates/index.php" />
         <option value="$PROJECT_DIR$/task10/libs/Sql.php" />
         <option value="$PROJECT_DIR$/task12/index.php" />
-        <option value="$PROJECT_DIR$/task12/libs/DbPdo.php" />
         <option value="$PROJECT_DIR$/task4/index.php" />
         <option value="$PROJECT_DIR$/task4/libs/Sql.php" />
         <option value="$PROJECT_DIR$/task4/libs/MySql.php" />
         <option value="$PROJECT_DIR$/task12/libs/Sql.php" />
+        <option value="$PROJECT_DIR$/task12/libs/DbPdo.php" />
       </list>
     </option>
   </component>
@@ -231,6 +234,16 @@
               <option name="myItemId" value="MyPHP" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="MyPHP" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="MyPHP" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="task10" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
@@ -251,16 +264,6 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="libs" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="MyPHP" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="MyPHP" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -837,8 +840,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/task12/libs/DbPdo.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.5851979" vertical-offset="0" max-vertical-offset="680">
-          <caret line="20" column="0" selection-start-line="20" selection-start-column="0" selection-end-line="20" selection-end-column="0" />
+        <state vertical-scroll-proportion="0.38037866" vertical-offset="357" max-vertical-offset="1224">
+          <caret line="34" column="0" selection-start-line="34" selection-start-column="0" selection-end-line="34" selection-end-column="0" />
           <folding />
         </state>
       </provider>
