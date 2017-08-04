@@ -44,37 +44,37 @@ if($deleteResult === false)
 }
 
 
-//$pgSql = new PgSql();
-//
-//$pgInsertResult = $pgSql->insert('PG_TEST')->values(['key','data'],['user14','Add insert text'])->execute();
-////$pgInsertResult = $pgSql->pgQuery($pgInsert);
-//if($pgInsertResult === false)
-//{
-//    $pgInsertError = INSERT_ERROR;
-//}
+$pgSql = new PgSql();
 
-//$pgSelect = $pgSql->select(['data'])->from('PG_TEST')->where(['key'],['user14'])->execute();
+$pgInsertResult = $pgSql->insert('PG_TEST')->values(['key','data'],['user14','Add insert text'])->execute();
+//$pgInsertResult = $pgSql->pgQuery($pgInsert);
+if($pgInsertResult === false)
+{
+    $pgInsertError = INSERT_ERROR;
+}
+
+$pgSelectResult = $pgSql->select(['data'])->from('PG_TEST')->where(['key'],['user14'])->execute();
 //$pgSelectResult = $pgSql->pgQuery($pgSelect);
-//if($pgSelectResult !== false)
-//{
-//    $pgSelectResultArr = $pgSql->fetchAssoc($pgSelectResult);
-//}else
-//{
-//    $pgSelectError = SELECT_ERROR;
-//}
-//
-//$pgUpdate = $pgSql->update('PG_TEST')->set(['data'],['new value'])->where(['key'],['user14'])->execute();
+if($pgSelectResult !== false)
+{
+    $pgSelectResultArr = $pgSql->fetchAssoc($pgSelectResult);
+}else
+{
+    $pgSelectError = SELECT_ERROR;
+}
+
+$pgUpdateResult = $pgSql->update('PG_TEST')->set(['data'],['new value'])->where(['key'],['user14'])->execute();
 //$pgUpdateResult = $pgSql->pgQuery($pgUpdate);
-//if($pgUpdateResult === false)
-//{
-//    $pgUpdateError = UPDATE_ERROR;
-//}
-//
-//$pgDelete = $pgSql->delet()->from('PG_TEST')->where(['key'],['user14'])->execute();
+if($pgUpdateResult === false)
+{
+    $pgUpdateError = UPDATE_ERROR;
+}
+
+$pgDeleteResult = $pgSql->delet()->from('PG_TEST')->where(['key'],['user14'])->execute();
 //$pgDeleteResult = $pgSql->pgQuery($pgDelete);
-//if($pgDeleteResult === false)
-//{
-//    $pgDeleteError = DELETE_ERROR;
-//}
+if($pgDeleteResult === false)
+{
+    $pgDeleteError = DELETE_ERROR;
+}
 
 include ('templates/index.php');
