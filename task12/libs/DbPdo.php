@@ -4,58 +4,89 @@
 class DbPdo extends Sql
 {
     protected $testPdo;
-//    protected $dbConnect;
+    protected $dbConnect;
+    protected $sql;
+    private $baseToConnect;
+    public $stmt;
     public function __construct($baseToConnect,$hostToConnect,$dbName,$user,$password)
     {
         $baseAndHostDbName = $baseToConnect.':host='.$hostToConnect.'; dbname='.$dbName;
-//var_dump($baseAndHostDbName);
-       // $this->dbConnect 
-        $opt = [
-        PDO::ATTR_ERRMODE            => PDO::ERRMODE_EXCEPTION,
-        PDO::ATTR_DEFAULT_FETCH_MODE => PDO::FETCH_ASSOC,
-        PDO::ATTR_EMULATE_PREPARES   => false,
-        ];
-        $this->testPdo =  new PDO($baseAndHostDbName, $user , $password, $opt);
-    
-    //var_dump($this->c->query('select * from MY_TEST')->execute());
-    $this->bindParams();
-//var_dump($this->c); 
-//$this->c = $c; 
-//$this->bindParams();
+
+        $this->baseToConnect = $baseToConnect;
+
+        try {
+            $this->dbConnect =  new PDO($baseAndHostDbName, $user , $password);
+            $this->dbConnect->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+        } catch (PDOException $e) {
+            echo 'connect error: ';
+        }
+
+        $this->screeningBrackets();
+
     }
 
-    public function bindParams()
+    private function screeningBrackets()
     {
-        
-       var_dump($this->testPdo); 
+        $baseBrackets =['mysql'=>'`',
+                        'pgsql'=>'"'];
+        $this->screeningBrackets = $baseBrackets[$this->baseToConnect];
     }
 
-    public function query($sql=false,$bindParamsArr = false)
+    public function execute($bindParamsArr = false)
     {
 
-var_dump($this->cccc);
-        if($sql == false)
-            
-            $stmt = $this->cccc->prepare($sql);
-//var_dump($stmt);
-            $paramsCount = sizeof($bindParamsArr);
-            foreach($bindParamsArr as $paramName=>$paramValue)
+        $dbCon = $this->dbConnect;
+        $sql = parent::execute();
+var_dump($sql);
+        if($this->dbConnect !== null){
+
+            $stmt = $dbCon->prepare($sql);
+
+            if($bindParamsArr == false)
             {
-               $stmt->bindParam($paramName,$paramValue);
+                $result = $stmt->execute();
+            }else
+            {
+                if(is_array($bindParamsArr[0]))
+                {
+                    foreach($bindParamsArr as $value)
+                    {
+                        foreach($value as $paramName=>&$paramValue)
+                        {
+                            $stmt->bindParam($paramName,$paramValue);
+                            $result = $stmt->execute();
+                        }
+                    }
+
+                }else
+                {
+                    foreach($bindParamsArr as $paramName=>&$paramValue)
+                    {
+                        $stmt->bindParam($paramName,$paramValue);
+                    }
+                $result = $stmt->execute();
+                }
             }
-//            var_dump($stmt);
-            /*for($i=0;$i<$paramsCount;$i++)
-            {
-                
-            }*/
-        
+            $this->stmt = $stmt;
+
+            if($result == false)
+                $result =['error'=>0];
+            return $result;
+        }else{
+            return ['error'=>1];
+        }
 
     }
-//    public function prepareSql($sql)
-//    {
-//
-//    }
 
+    public function fetchAssoc()
+    {
+        while($assocRow = $this->stmt->fetch(PDO::FETCH_ASSOC))
+        {
+            $result[]=$assocRow;
+        }
+
+        return $result;
+    }
 
 }
 

@@ -2,29 +2,47 @@
 
 include ('libs/Sql.php');
 include ('libs/DbPdo.php');
+include ('libs/function.php');
+include ('config.php');
 
-$sql = new DbPdo('mysql','localhost','user1','user1','tuser1');
-//$select = $sql->select(['key','data'])->from('MY_TEST')->where(['data','key'],[':data',':key'])->groupBy(['key','data'])->limit('1')->execute();
-//$sql->query($select,[':data'=>'parametr data',':key'=>'params key']);
-$sql->bindParams();
+set_error_handler('myHandler', E_ALL);
 
-//$innerJoin = $sql->select(['key','data'])->from('MY_TEST')->innerJoin(['table1'],['joinfield'],['MY_TEST'],['key'])
-//    ->orderBy(['key','joinfield'],['ask','desk'])->execute();
-//$having = $sql->select(['key','data'])->from('MY_TEST')->having(['AVG','MAX'],['key','data'],['>','='],[10,20])->execute();
-//$leftJoin = $sql->select(['key','data'])->from('MY_TEST')->leftJoin(['table1'],['joinfield'],['MY_TEST'],['key'])
-//    ->orderBy(['key','joinfield'],['ask','desk'])->execute();
-//$rightJoin = $sql->select(['key','data'])->from('MY_TEST')->rightJoin(['table1'],['joinfield'],['MY_TEST'],['key'])
-//    ->orderBy(['key','joinfield'],['ask','desk'])->execute();
-//$crossJoin = $sql->select(['key','data'])->from('MY_TEST')->crossJoin(['table1','table2'])->execute();
-//$naturalJoin = $sql->select(['key','data'])->from('MY_TEST')->naturalJoin(['table1','table2'])->execute();
-//$selectDistinct = $sql->selectDistinct(['key','data'])->from('MY_TEST')->where(['data','key'],[10,11])->groupBy(['key','data'])->limit('1')->execute();
-//$insert = $sql->insert('MY_TEST')->values(['key','data'],['user14','Add insert text'])->execute();
-//$update = $sql->update('MY_TEST')->set(['data'],['new value'])->execute();
-//$deleted = $sql->delet()->from('MY_TEST')->where(['key'],['user14'])->execute();
-//
-//var_dump($select,$innerJoin,$having,$leftJoin,$rightJoin,$crossJoin,$naturalJoin,$selectDistinct,$insert,$update,$deleted);
-//var_dump($select);
-//var_dump('' ==false);
+//$sql = new DbPdo('mysql','localhost','user1','user1','tuser1');
+$mySql = new DbPdo('mysql','localhost','user1','root','');
 
-//if('' == false)
-  //  echo 11111111;
+$insertResult = $mySql->insert('MY_TEST')->values(['key','data'],[':key',':data'])->
+                execute([':key'=>'user14',':data'=>'data for user14']);
+if(is_array($insertResult))
+{
+    if(array_key_exists('error',$insertResult))
+        $insertError = errors($insertResult['error']);
+}
+
+$selectResult = $mySql->select(['data'])->from('MY_TEST')->where(['key','id'],[':key',':id'])->execute(
+                        [':key'=>'user14',':id'=>'4']);
+
+if(is_array($selectResult))
+{
+    if(array_key_exists('error',$selectResult))
+        $selectError = errors($selectResult['error']);
+}
+
+$updateResult = $mySql->update('MY_TEST')->set(['data'],[':data'])->execute([':data'=>'new value']);
+
+if(is_array($updateResult))
+{
+    if(array_key_exists('error',$updateResult))
+        $updateError = errors($updateResult['error']);
+}
+
+$deleteResult = $mySql->delet()->from('MY_TEST')->where(['key'],[':key'])->execute([':key'=>'user14']);
+
+if(is_array($deleteResult))
+{
+    if(array_key_exists('error',$deleteResult))
+        $deleteError = errors($deleteResult['error']);
+}
+
+
+
+include ('templates/index.php');

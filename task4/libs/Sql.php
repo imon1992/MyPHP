@@ -140,13 +140,13 @@ class Sql
     public function execute()
     {
         $result = '';
-
+//var_dump($this->sqlOrder);
         foreach($this->sqlOrder as $values)
         {
             $result .= $this->$values;
             $this->$values = null;
         }
-        $this->sqlOrder[] = null;
+        $this->sqlOrder = null;
 
 //        foreach($this as$key=> $value)
 //        {

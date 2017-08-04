@@ -18,33 +18,21 @@ class MySql extends Sql
         if (!$link) {
              die(' MySql Connect Error');
          }
-//        var_dump($link);
+
        $this->connect = $link;
      }
     public function execute()
     {
         $sql = parent::execute();
-//        var_dump($sql);
         $sql = str_replace('"','`',$sql);
-        var_dump($sql);
-////        var_dump($this->connect);
-        mysql_select_db('user1',$this->connect);
-////
-        $result = mysql_query($sql,$this->connect);
-        var_dump($result);
 
-//        return $result;
+        mysql_select_db('user1',$this->connect);
+
+        $result = mysql_query($sql,$this->connect);
+
+        return $result;
 
     }
-//    public function query($query)
-//    {
-//        $query = str_replace('"','`',$query);
-//        mysql_select_db('user1',$this->connect);
-//
-//       $result = mysql_query($query,$this->connect);
-//
-//        return $result;
-//    }
 
     public function fetchAssoc($resource)
     {

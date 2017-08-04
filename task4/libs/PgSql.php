@@ -11,9 +11,9 @@ class PgSql extends Sql
 
     public function connectToDb()
     {
-        $link = pg_connect("host=localhost dbname=user1 user=user1 password=user1z");
+//        $link = pg_connect("host=localhost dbname=user1 user=user1 password=user1z");
         //home connect
-//        $link =pg_connect("host=localhost dbname=user1 user=postgres");
+        $link =pg_connect("host=localhost dbname=user1 user=postgres");
         if(!$link)
          {
             die('Connect Error');
@@ -30,10 +30,10 @@ class PgSql extends Sql
         $this->connect = $link;
     }
 
-    public function pgQuery($query)
+    public function execute()
     {
-
-        $result = pg_query($this->connect, $query);
+        $sql = parent::execute();
+        $result = pg_query($this->connect, $sql);
 
         return $result;
     }
