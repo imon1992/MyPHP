@@ -1,9 +1,9 @@
 <?php
 
 //include ('ActiveRecords.php');
-class MyTest extends ActiveRecords
+class PgTest extends ActiveRecords
 {
-    protected $tableField = [];
+    public $tableField = [];
     protected $dbConnect;
 
     public function  __construct()
@@ -28,8 +28,7 @@ class MyTest extends ActiveRecords
         $fieldValuesArr = $this->fieldValuesArr();
         if(sizeof($fieldValuesArr[0]) !== 0)
         {
-            $sql = $this->insert('MY_TEST')->values($fieldValuesArr[0],$fieldValuesArr[1])->execute();
-            $sql = str_replace('"','`',$sql);
+            $sql = $this->insert('PG_TEST')->values($fieldValuesArr[0],$fieldValuesArr[1])->execute();
 
             $result = $this->query($sql);
 
@@ -43,8 +42,8 @@ class MyTest extends ActiveRecords
     public function update()
     {
         $fieldValuesArr = $this->fieldValuesArr();
-        $sql = parent::update('MY_TEST')->set($fieldValuesArr[0],$fieldValuesArr[1])->execute();
-        $sql = str_replace('"','`',$sql);
+        $sql = parent::update('PG_TEST')->set($fieldValuesArr[0],$fieldValuesArr[1])->execute();
+
 
         $result = $this->query($sql);
 
@@ -56,8 +55,8 @@ class MyTest extends ActiveRecords
     {
         $columns = $this->getAllColumns();
         $fieldValuesArr = $this->fieldValuesArr();
-        $sql= $this->select($columns)->from('MY_TEST')->where($fieldValuesArr[0],$fieldValuesArr[1])->execute();
-        $sql = str_replace('"','`',$sql);
+        $sql= $this->select($columns)->from('PG_TEST')->where($fieldValuesArr[0],$fieldValuesArr[1])->execute();
+
 
         $result = $this->query($sql);
 
@@ -69,8 +68,8 @@ class MyTest extends ActiveRecords
     public function deleted()
     {
         $fieldValuesArr = $this->fieldValuesArr();
-        $sql = $this->delet()->from('MY_TEST')->where($fieldValuesArr[0],$fieldValuesArr[1])->execute();
-        $sql = str_replace('"','`',$sql);
+        $sql = $this->delet()->from('PG_TEST')->where($fieldValuesArr[0],$fieldValuesArr[1])->execute();
+
 
         $result = $this->query($sql);
 
@@ -81,7 +80,7 @@ class MyTest extends ActiveRecords
     {
         foreach($this->tableField as $field=>$value)
         {
-                $fieldsArr[] = $field;
+            $fieldsArr[] = $field;
         }
 
         return $fieldsArr;
@@ -98,6 +97,7 @@ class MyTest extends ActiveRecords
 
     private function fieldValuesArr()
     {
+        var_dump($this->tableField);
         foreach($this->tableField as $field=>$value)
         {
             if($value != false)
@@ -117,48 +117,50 @@ class MyTest extends ActiveRecords
 
     private function query($sql)
     {
-        mysql_select_db('user1',$this->dbConnect);
+        $result = pg_query($this->dbConnect, $sql);
 
-        $result = mysql_query($sql,$this->dbConnect);
         return $result;
     }
-    
-    protected function fieldsInTable()
+
+
+     function fieldsInTable()
     {
-        $sql = "SELECT COLUMN_NAME FROM INFORMATION_SCHEMA.COLUMNS WHERE table_name = 'MY_TEST'";
+        $sql = "SELECT COLUMN_NAME FROM INFORMATION_SCHEMA.COLUMNS WHERE information_schema.columns.table_name = 'PG_TEST'";
         $result = $this->query($sql);
-        while($row = mysql_fetch_row($result))
+        while($row = pg_fetch_row($result))
             $fields[]= $row;
+
         foreach($fields as $key=>$value)
         {
             $this->tableField[$value[0]]='';
         }
-
     }
 
     private function connectToDb()
     {
-//        $link = mysql_connect('localhost', 'user1', 'tuser1');
+//        $link = pg_connect("host=localhost dbname=user1 user=user1 password=user1z");
         //home connect
-        $link = mysql_connect('localhost', 'root', '');
-        if (!$link) {
-             die(' MySql Connect Error');
-         }   
-       $this->dbConnect = $link;
-     }
+        $link =pg_connect("host=localhost dbname=user1 user=postgres");
+        if(!$link)
+        {
+            die('Connect Error');
+        }
+        $this->dbConnect = $link;
+    }
 }
 
-//$c = new MyTest();
-////$c->key = 'user13';
-////$c->data = 'some data';
+//try{
+//$c = new PgTest();
+////var_dump($c->tableField);
+//$c->key = 'user14';
+//$c->data = 'some data';
 ////var_dump($c->read());
 ////$c->deleted();
 ////var_dump($c->tableField);
-////$c->update();
 ////$c->iddd = 100;
-//try{
 //
-//$c->save();
+////$c->update();
+////    $c->save();
 //}catch (Exception $e){
 //    echo $e->getMessage();
 //}
