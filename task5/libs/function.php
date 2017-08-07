@@ -24,5 +24,7 @@ function errors($errorNumber){
             return PG_SELECT_ERROR;
         case 10:
             return PG_DELETED_ERROR;
+        case 11:
+            return KEY_EXIST_ERROR;
     }
 }

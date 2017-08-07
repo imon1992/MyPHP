@@ -11,3 +11,4 @@ define("MYSQL_DELETED_ERROR",     "Problems with deleted data");//7
 define("PG_INSERT_ERROR",     "Problems with save data");//8
 define("PG_SELECT_ERROR",     "Problems with get data");//9
 define("PG_DELETED_ERROR",     "Problems with deleted data");//10
+define("KEY_EXIST_ERROR",     "Key already exist");//11

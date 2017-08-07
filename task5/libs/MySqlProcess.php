@@ -12,12 +12,18 @@ class MySqlProcess implements iWorkData
 
     public function saveData($key,$val)
     {
+        if($this->checkKey($key)===0)
+        {
         $sql = "INSERT INTO MY_TEST(`key`,`data`)
                 VALUES('$key','$val') ";
         $queryResult = $this->query($sql);
         if($queryResult === false)
             return ['error'=>5];
         return true;
+        }else
+        {
+            return ['error'=>11];
+        }
     }
 
     public function getData($key)
@@ -58,6 +64,18 @@ class MySqlProcess implements iWorkData
        $this->connect = $link;
     }
 
+     private function checkKey($key)
+    {
+        $sql = 'SELECT `key`
+                FROM `MY_TEST`
+                WHERE `key` = '.'\''.$key .'\''
+                .' LIMIT 1';
+        var_dump($sql);
+        $result = $this->query($sql);
+        $result = mysql_num_rows($result);
+        return $result;
+    }
+
     public function query($query)
     {
         mysql_select_db('user1',$this->connect);
@@ -84,4 +102,3 @@ class MySqlProcess implements iWorkData
 
 
 }
-
