@@ -7,6 +7,7 @@ class Musician implements iMusician
     protected $name;
     protected $type;
     protected $instrument = [];
+    protected $bands = [];
 
     public function __construct($name,$type)
     {
@@ -26,6 +27,7 @@ class Musician implements iMusician
 
     public function assignToBand(iBand $nameBand)
     {
+        $nameBand->addMusician($this);
     }
 
     public function getMusicianType(){
@@ -36,5 +38,10 @@ class Musician implements iMusician
     public function getName()
     {
         return $this->name;
+    }
+
+    public function getBands()
+    {
+        return $this->bands;
     }
 }

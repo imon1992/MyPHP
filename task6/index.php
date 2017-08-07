@@ -5,6 +5,7 @@ include ('libs/Instrument.php');
 include ('libs/Musician.php');
 
 $metallica = new Band('Metallica','rock');
+$newGroup = new Band('Home Players','Pop');
 
 $guitarPlayer = new Musician('James Alan Hetfield','solo');
 $drummer = new Musician('Lars Ulrich','drummer');
@@ -27,15 +28,14 @@ $guitarPlayer2->addInstrument($busGuitar);
 $guitarPlayer3->addInstrument($guitar);
 $guitarPlayer3->addInstrument($busGuitar);
 
-$metallica->addMusician($guitarPlayer);
-$metallica->addMusician($drummer);
-$metallica->addMusician($guitarPlayer2);
-$metallica->addMusician($guitarPlayer3);
+$guitarPlayer->assignToBand($metallica);
+$drummer->assignToBand($metallica);
+$guitarPlayer2->assignToBand($metallica);
+$guitarPlayer3->assignToBand($metallica);
 
 $bandName = $metallica->getName();
 $genre = $metallica->getGenre();
 $musicians = $metallica->getMusician();
 $musiciansCount = sizeof($musicians);
-
 
 include ('templates/index.php');
