@@ -12,9 +12,9 @@ class MySql extends Sql
 
     public function connectToDb()
     {
-//        $link = mysql_connect('localhost', 'user1', 'tuser1');
+        $link = mysql_connect('localhost', 'user1', 'tuser1');
         //home connect
-        $link = mysql_connect('localhost', 'root', '');
+//        $link = mysql_connect('localhost', 'root', '');
         if (!$link) {
              die(' MySql Connect Error');
          }

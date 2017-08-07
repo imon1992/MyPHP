@@ -7,7 +7,7 @@ class DbPdo extends Sql
     protected $dbConnect;
     protected $sql;
     private $baseToConnect;
-    public $stmt;
+    protected $stmt;
     public function __construct($baseToConnect,$hostToConnect,$dbName,$user,$password)
     {
         $baseAndHostDbName = $baseToConnect.':host='.$hostToConnect.'; dbname='.$dbName;
@@ -37,7 +37,7 @@ class DbPdo extends Sql
 
         $dbCon = $this->dbConnect;
         $sql = parent::execute();
-var_dump($sql);
+//var_dump($sql);
         if($this->dbConnect !== null){
 
             $stmt = $dbCon->prepare($sql);
