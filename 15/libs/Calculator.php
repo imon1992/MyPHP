@@ -58,13 +58,7 @@ class calculator{
 
     public function  getMemory()
     {
-        if($this->firstValue !== null)
-        {
             return $this->memory;
-        }else
-        {
-            return 'Wrong number Priravnivaem k 0';
-        }
 
     }
 
