@@ -83,71 +83,71 @@
     </div>
     <!--    </div>-->
     <!--    <div class="col-md-6">-->
-    <div class="container">
-        <table class="table">
-            <caption>PgSql</caption>
-            <tr>
-                <td>Operation</td>
-                <td>result</td>
-            </tr>
-            <tr>
-                <td>
-                    save
-                </td>
-                <td>
-                    <?php
-                    if ($pgSaveError === null) {
-                        echo 'successful';
-                    } else {
-                        echo $pgSaveError;
-                    }
-                    ?>
-                </td>
-            </tr>
-            <tr>
-                <td>
-                    update
-                </td>
-                <td>
-                    <?php
-                    if ($pgUpdateError === null) {
-                        echo 'successful';
-                    } else {
-                        echo $pgUpdateError;
-                    }
-                    ?>
-                </td>
-            </tr>
-            <tr>
-                <td>
-                    read
-                </td>
-                <td>
-                    <?php
-                    if ($pgReadError === null) {
-                        echo 'successful';
-                    } else {
-                        echo $pgReadError;
-                    }
-                    ?>
-                </td>
-            </tr>
-            <tr>
-                <td>
-                    deleted
-                </td>
-                <td>
-                    <?php
-                    if ($pgDeleteError === null) {
-                        echo  'successful';
-                    } else {
-                        echo $pgDeleteError;
-                    }
-                    ?>
-                </td>
-            </tr>
-
-        </table>
+<!--    <div class="container">-->
+<!--        <table class="table">-->
+<!--            <caption>PgSql</caption>-->
+<!--            <tr>-->
+<!--                <td>Operation</td>-->
+<!--                <td>result</td>-->
+<!--            </tr>-->
+<!--            <tr>-->
+<!--                <td>-->
+<!--                    save-->
+<!--                </td>-->
+<!--                <td>-->
+<!--                    --><?php
+//                    if ($pgSaveError === null) {
+//                        echo 'successful';
+//                    } else {
+//                        echo $pgSaveError;
+//                    }
+//                    ?>
+<!--                </td>-->
+<!--            </tr>-->
+<!--            <tr>-->
+<!--                <td>-->
+<!--                    update-->
+<!--                </td>-->
+<!--                <td>-->
+<!--                    --><?php
+//                    if ($pgUpdateError === null) {
+//                        echo 'successful';
+//                    } else {
+//                        echo $pgUpdateError;
+//                    }
+//                    ?>
+<!--                </td>-->
+<!--            </tr>-->
+<!--            <tr>-->
+<!--                <td>-->
+<!--                    read-->
+<!--                </td>-->
+<!--                <td>-->
+<!--                    --><?php
+//                    if ($pgReadError === null) {
+//                        echo 'successful';
+//                    } else {
+//                        echo $pgReadError;
+//                    }
+//                    ?>
+<!--                </td>-->
+<!--            </tr>-->
+<!--            <tr>-->
+<!--                <td>-->
+<!--                    deleted-->
+<!--                </td>-->
+<!--                <td>-->
+<!--                    --><?php
+//                    if ($pgDeleteError === null) {
+//                        echo  'successful';
+//                    } else {
+//                        echo $pgDeleteError;
+//                    }
+//                    ?>
+<!--                </td>-->
+<!--            </tr>-->
+<!---->
+<!--        </table>-->
         <?php }else{echo $globalError;}?>
     </div>
     <!--    </div>-->
