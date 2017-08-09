@@ -70,7 +70,6 @@ class MySqlProcess implements iWorkData
                 FROM `MY_TEST`
                 WHERE `key` = '.'\''.$key .'\''
                 .' LIMIT 1';
-        var_dump($sql);
         $result = $this->query($sql);
         $result = mysql_num_rows($result);
         return $result;

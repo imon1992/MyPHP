@@ -1,6 +1,6 @@
 <?php
 
-include ('iWorkData.php');
+//include ('iWorkData.php');
 
 class PgSqlProcess implements iWorkData
 {
@@ -56,10 +56,9 @@ class PgSqlProcess implements iWorkData
      private function checkKey($key)
     {
         $sql = 'SELECT "key"
-                FROM "user1"."PG_TEST"
+                FROM PG_TEST
                 WHERE "key" = '.'\''.$key .'\''
             .' LIMIT 1';
-        var_dump($sql);
         $result = $this->query($sql);
         $result = pg_num_rows($result);
         return $result;
@@ -67,9 +66,9 @@ class PgSqlProcess implements iWorkData
 
     public function connectToDb()
     {
-//         $link =pg_connect("host=localhost dbname=user1 user=user1 password=user1z");
+        $link =pg_connect("host=localhost dbname=user1 user=user1 password=user1z");
 //        //home connect
-        $link =pg_connect("host=localhost dbname=user1 user=postgres");
+//        $link =pg_connect("host=localhost dbname=user1 user=postgres");
         //home connect
 //        $link =pg_connect("host=localhost dbname=user1 user=postgres");
 //        if (!$link) {

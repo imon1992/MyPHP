@@ -11,6 +11,51 @@ class CalculatorTest extends PHPUnit_Framework_TestCase
         $this->calculator = new Calculator();
     }
 
+   public function testGetFirstValue()
+    {
+        $firstValue = $this->calculator;
+        $firstValue->setFirstValue(10);
+        $this->assertEquals(10,$firstValue->getFirstValue());
+    }
+
+   public function testGetSecondValue()
+    {
+        $secondValue = $this->calculator;
+        $secondValue->setSecondValue(10);
+        $this->assertEquals(10,$secondValue->getSecondValue());
+    }
+
+   public function testSetFirstValue()
+    {
+        $firstValue = $this->calculator;
+        $this->assertEquals($firstValue->getFirstValue(),$firstValue->setFirstValue(10));
+    }
+
+
+
+   public function testSetSecondValue()
+    {
+        $secondValue = $this->calculator;
+        $this->assertEquals($secondValue->getSecondValue(),$secondValue->setSecondValue(10));
+    }
+
+
+
+     public  function testGetMemory()
+    {
+        $memory= $this->calculator;
+        $memory->setMemory(10);
+        $this->assertEquals(10,$memory->getMemory());
+     }
+
+   public function testSetMemory()
+    {
+        $memory = $this->calculator;
+        $this->assertEquals($memory->getMemory(),$memory->setMemory(10));
+    }
+
+    
+    
     public function testPlus()
     {
         $plus = $this->calculator;
