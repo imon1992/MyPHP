@@ -160,7 +160,7 @@ class Model
    
 	public function sendEmail()
 	{
-        $to = 'vpavlov@geeksforless.net';
+        $to = 'andrey.kolotii@gmail.com';
         $subject = $_POST['subject'];
         $messageText = wordwrap($_POST['message'], 70, "\r\n");
 
