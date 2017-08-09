@@ -2,7 +2,6 @@
 
 class Sql
 {
-    //    protected $sql;
     protected $sqlOrder;
     protected $select;
     protected $from;

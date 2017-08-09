@@ -13,7 +13,6 @@
 <body>
 
 <div class="row">
-<!--    <div class="col-md-6">-->
         <div class="container">
 
             <table class="table">
@@ -81,8 +80,7 @@
 
             </table>
         </div>
-<!--    </div>-->
-<!--    <div class="col-md-6">-->
+
         <div class="container">
             <table class="table">
                 <caption>PgSql</caption>
@@ -149,6 +147,5 @@
 
             </table>
         </div>
-<!--    </div>-->
 </body>
 </html>

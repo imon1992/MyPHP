@@ -7,8 +7,7 @@ include ('config.php');
 
 set_error_handler('myHandler', E_ALL);
 
-$mySql = new DbPdo('mysql','localhost','user1','user1','tuser1');
-//$mySql = new DbPdo('mysql','localhost','user1','root','');
+$mySql = new DbPdo(MY_SQL_DB, MY_SQL_HOST, MY_SQL_DB_NAME, MY_SQL_USER, MY_SQL_PASSWORD);
 
 $insertResult = $mySql->insert('MY_TEST')->values(['key','data'],[':key',':data'])->
                 execute([':key'=>'user14',':data'=>'data for user14']);
@@ -44,7 +43,7 @@ if(is_array($deleteResult))
 }
 
 
-$pgSql = new DbPdo('pgsql','localhost','user1','user1','user1z');
+$pgSql = new DbPdo(PG_SQL_DB, PG_SQL_HOST, PG_SQL_DB_NAME, PG_SQL_USER, PG_SQL_PASSWORD);
 
 $pgInsert = $pgSql->insert('PG_TEST')->values(['key','data'],[':key',':data'])->
             execute([':key'=>'user14',':data'=>'data for user14']);
