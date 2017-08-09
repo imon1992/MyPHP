@@ -2,7 +2,6 @@
 
 class ActiveRecords
 {
-//    protected $sql;
     protected $sqlOrder;
     protected $select;
     protected $from;
@@ -141,7 +140,7 @@ class ActiveRecords
     public function execute()
     {
         $result = '';
-//var_dump($this->sqlOrder);
+
         foreach($this->sqlOrder as $values)
         {
             $result .= $this->$values;
@@ -149,10 +148,6 @@ class ActiveRecords
         }
         $this->sqlOrder = null;
 
-//        foreach($this as$key=> $value)
-//        {
-////            $this->$key = null;
-//        }
 
         return $result;
     }

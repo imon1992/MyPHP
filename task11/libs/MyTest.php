@@ -1,6 +1,5 @@
 <?php
 
-//include ('ActiveRecords.php');
 class MyTest extends ActiveRecords
 {
     protected $tableField = [];
@@ -117,7 +116,7 @@ class MyTest extends ActiveRecords
 
     private function query($sql)
     {
-        mysql_select_db('user1',$this->dbConnect);
+        mysql_select_db(DB_MY_SQL,$this->dbConnect);
 
         $result = mysql_query($sql,$this->dbConnect);
         return $result;
@@ -125,7 +124,8 @@ class MyTest extends ActiveRecords
     
     protected function fieldsInTable()
     {
-        $sql = "SELECT COLUMN_NAME FROM INFORMATION_SCHEMA.COLUMNS WHERE table_name = 'MY_TEST'";
+        $sql = $this->select(['column_name'])->from('information_schema.columns')->where(['table_name'],['MY_TEST'])->execute();
+        $sql = str_replace('"','`',$sql);
         $result = $this->query($sql);
         while($row = mysql_fetch_row($result))
             $fields[]= $row;
@@ -138,9 +138,9 @@ class MyTest extends ActiveRecords
 
     private function connectToDb()
     {
-//        $link = mysql_connect('localhost', 'user1', 'tuser1');
+        $link = mysql_connect(HOST_MY_SQL, USER_MY_SQL, PASSWORD_MY_SQL);
         //home connect
-        $link = mysql_connect('localhost', 'root', '');
+//        $link = mysql_connect(HOST_MY_SQL, USER_MY_SQL, PASSWORD_MY_SQL);
         if (!$link) {
              die(' MySql Connect Error');
          }   
@@ -148,18 +148,3 @@ class MyTest extends ActiveRecords
      }
 }
 
-//$c = new MyTest();
-////$c->key = 'user13';
-////$c->data = 'some data';
-////var_dump($c->read());
-////$c->deleted();
-////var_dump($c->tableField);
-////$c->update();
-////$c->iddd = 100;
-//try{
-//
-//$c->save();
-//}catch (Exception $e){
-//    echo $e->getMessage();
-//}
-//var_dump($c->tableField);
