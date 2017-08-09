@@ -160,7 +160,7 @@ class Model
    
 	public function sendEmail()
 	{
-        $to = 'andrey.kolotii@gmail.com';
+        $to = 'mvlov@geeksforless.net';
         $subject = $_POST['subject'];
         $messageText = wordwrap($_POST['message'], 70, "\r\n");
 
@@ -169,7 +169,7 @@ class Model
             'Reply-To: '.$_POST['email'] . "\r\n" .
             'MIME-Version: 1.0' . "\r\n".
             'Content-type: text/html; charset=utf-8' . "\r\n";
-
+        date_default_timezone_set('Europe/Kiev');
         $message = '<html>
                     <body>
                       <p>From:'.$_POST['fullName'] .' </p>
